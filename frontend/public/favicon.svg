@@ -1,0 +1,33 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#0A0A0A"/>
+  <!-- Left building -->
+  <rect x="10" y="30" width="13" height="22" fill="#FFFFFF"/>
+  <rect x="12.8" y="33" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="17.6" y="33" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="12.8" y="38" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="17.6" y="38" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="12.8" y="43" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="17.6" y="43" width="2.6" height="2.6" fill="#F59E0B"/>
+  <!-- Center tallest building -->
+  <rect x="24" y="14" width="16" height="38" fill="#F59E0B"/>
+  <rect x="27.5" y="18" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="33" y="18" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="27.5" y="24" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="33" y="24" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="27.5" y="30" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="33" y="30" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="27.5" y="36" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="33" y="36" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="27.5" y="42" width="3" height="3" fill="#0A0A0A"/>
+  <rect x="33" y="42" width="3" height="3" fill="#0A0A0A"/>
+  <!-- Right building -->
+  <rect x="41" y="23" width="13" height="29" fill="#FFFFFF"/>
+  <rect x="43.8" y="27" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="48.6" y="27" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="43.8" y="32" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="48.6" y="32" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="43.8" y="37" width="2.6" height="2.6" fill="#F59E0B"/>
+  <rect x="48.6" y="37" width="2.6" height="2.6" fill="#F59E0B"/>
+  <!-- Ground base -->
+  <rect x="8" y="52" width="48" height="3" fill="#F59E0B"/>
+</svg>

@@ -264,12 +264,12 @@ export default function App() {
               data-testid="header-logo-link"
             >
               {/* Skyscraper brand mark */}
-              <FormatLogoMark className="w-9 h-9 text-zinc-900 group-hover:text-amber-600 transition-colors" />
+              <FormatLogoMark className="w-12 h-12 sm:w-14 sm:h-14 text-zinc-900 group-hover:text-amber-600 transition-colors" />
               <div className="flex flex-col">
-                <span className="font-heading font-black text-xl tracking-wider leading-none text-zinc-900 group-hover:text-amber-500 transition-colors">
+                <span className="font-heading font-black text-2xl sm:text-3xl tracking-wider leading-none text-zinc-900 group-hover:text-amber-500 transition-colors">
                   ФОРМАТ
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.25em] text-zinc-500">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-zinc-500">
                   Строительная компания
                 </span>
               </div>
@@ -1326,8 +1326,8 @@ export default function App() {
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className="flex items-center gap-3"
               >
-                <FormatLogoMark className="w-8 h-8 text-white" />
-                <span className="font-heading font-black text-lg tracking-wider text-white">
+                <FormatLogoMark className="w-12 h-12 text-white" />
+                <span className="font-heading font-black text-2xl tracking-wider text-white">
                   ФОРМАТ
                 </span>
               </a>
