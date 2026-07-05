@@ -274,11 +274,6 @@ export default function App() {
                 </span>
               </div>
             </a>
-
-            <div className="hidden md:flex items-center gap-2 text-zinc-600 text-xs tracking-wider bg-zinc-100 border border-zinc-200 px-3 py-1.5 uppercase font-semibold">
-              <MapPin className="w-3.5 h-3.5 text-amber-500" />
-              <span>{CONTACTS.city}</span>
-            </div>
           </div>
 
           {/* Desktop Navigation Links */}
