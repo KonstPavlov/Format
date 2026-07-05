@@ -450,14 +450,14 @@ export default function App() {
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-4">
               <button 
                 onClick={() => scrollToSection("contact-form-section")}
-                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center"
+                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-sm sm:text-xs tracking-wider px-8 py-5 sm:py-4.5 transition-all duration-300 font-heading text-center"
                 data-testid="hero-consult-button"
               >
                 Получить консультацию
               </button>
               <button 
                 onClick={() => scrollToSection("calculator-section")}
-                className="w-full sm:w-auto bg-transparent border border-zinc-300 hover:border-amber-500 hover:text-amber-600 text-zinc-900 font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center"
+                className="w-full sm:w-auto bg-transparent border border-zinc-300 hover:border-amber-500 hover:text-amber-600 text-zinc-900 font-bold uppercase text-sm sm:text-xs tracking-wider px-8 py-5 sm:py-4.5 transition-all duration-300 font-heading text-center"
                 data-testid="hero-calc-button"
               >
                 Рассчитать стоимость
@@ -536,6 +536,24 @@ export default function App() {
                 </span>
               </div>
             </button>
+
+            {/* Small trust stats to fill the space */}
+            <div className="mt-8 flex items-center justify-center gap-6 sm:gap-8">
+              <div className="text-center">
+                <span className="block font-heading font-black text-2xl sm:text-3xl text-amber-500 leading-none">7+</span>
+                <span className="block text-[10px] uppercase tracking-widest text-zinc-500 font-bold mt-1">лет опыта</span>
+              </div>
+              <div className="w-px h-10 bg-zinc-200"></div>
+              <div className="text-center">
+                <span className="block font-heading font-black text-2xl sm:text-3xl text-amber-500 leading-none">250+</span>
+                <span className="block text-[10px] uppercase tracking-widest text-zinc-500 font-bold mt-1">объектов сдано</span>
+              </div>
+              <div className="w-px h-10 bg-zinc-200"></div>
+              <div className="text-center">
+                <span className="block font-heading font-black text-2xl sm:text-3xl text-amber-500 leading-none">2 года</span>
+                <span className="block text-[10px] uppercase tracking-widest text-zinc-500 font-bold mt-1">гарантия</span>
+              </div>
+            </div>
 
           </div>
         </div>
