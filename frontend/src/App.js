@@ -200,7 +200,7 @@ export default function App() {
   const handleSvoCTA = () => {
     setFormData((prev) => ({
       ...prev,
-      comment: "Хочу воспользоваться скидкой для участников СВО и их семей."
+      comment: "Хочу воспользоваться скидкой для молодых семей."
     }));
     scrollToSection("contact-form-section");
   };
@@ -442,53 +442,55 @@ export default function App() {
           </div>
         </div>
 
-        {/* RIGHT — Empty renovated interior (elite porcelain + door, no window) with СКИДКА plaque */}
+        {/* RIGHT — Empty luxury interior (elite marble/porcelain + door, no window) with discount plaque */}
         <div className="relative min-h-[440px] lg:min-h-full">
           <img 
-            src="https://images.unsplash.com/photo-1566272726777-91f06285e3c9?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
-            alt="Пустая квартира после ремонта — элитный керамогранит и дверь от ФОРМАТ" 
-            className="absolute inset-0 w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1774876549429-97c4e83eb557?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
+            alt="Элитный интерьер после ремонта — керамогранит и дверь от ФОРМАТ" 
+            className="absolute inset-0 w-full h-full object-cover contrast-110 saturate-110 brightness-95"
             loading="eager"
           />
-          {/* subtle darkening for text readability */}
-          <div className="absolute inset-0 bg-black/20"></div>
+          {/* Warm cinematic filter overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-900/25 via-transparent to-zinc-900/35 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-black/15"></div>
 
           {/* Transition line — vertical & narrow on desktop, horizontal on mobile */}
           <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-2xl"></div>
           <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-lg"></div>
 
-          {/* Big СКИДКА plaque — centered, on a brush stroke, no icon, clickable */}
+          {/* Discount plaque — centered, yellow brush stroke, red text, tilted (right edge lower), clickable */}
           <button
             onClick={handleSvoCTA}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-[280px] sm:w-[360px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[5deg] z-30 w-[330px] sm:w-[440px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
             data-testid="hero-svo-badge"
           >
-            {/* Brush-stroke shape (inline SVG, real transparency) */}
-            <svg viewBox="0 0 400 210" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
+            {/* Yellow brush-stroke shape (inline SVG, real transparency) */}
+            <svg viewBox="0 0 440 210" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <filter id="brushRough" x="-10%" y="-20%" width="120%" height="140%">
                   <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="3" seed="7" result="noise" />
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="26" xChannelSelector="R" yChannelSelector="G" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="24" xChannelSelector="R" yChannelSelector="G" />
                 </filter>
               </defs>
               <g filter="url(#brushRough)">
-                <rect x="20" y="34" width="360" height="150" rx="8" fill="#B01D1C" />
-                <rect x="38" y="28" width="324" height="22" rx="11" fill="#B01D1C" />
-                <rect x="38" y="172" width="336" height="20" rx="10" fill="#B01D1C" />
+                <rect x="10" y="28" width="420" height="156" rx="8" fill="#F59E0B" />
+                <rect x="30" y="20" width="380" height="24" rx="12" fill="#F59E0B" />
+                <rect x="30" y="170" width="392" height="22" rx="11" fill="#F59E0B" />
               </g>
             </svg>
-            <div className="relative z-10 text-center px-6">
-              <span className="block font-heading font-black text-white uppercase leading-none text-4xl sm:text-5xl tracking-tighter drop-shadow-md">
-                Скидка
+            <div className="relative z-10 text-center px-8">
+              <span className="block font-heading font-black text-red-700 uppercase leading-none text-3xl sm:text-4xl tracking-tighter">
+                Скидки
               </span>
-              <span className="block font-heading font-black text-white/95 uppercase leading-tight text-[11px] sm:text-sm mt-1.5 tracking-wide">
-                для участников СВО и их семей
+              <span className="block font-heading font-black text-red-700 uppercase leading-tight text-base sm:text-xl mt-1 tracking-tight">
+                молодым семьям
               </span>
             </div>
           </button>
         </div>
 
       </section>
+
 
 
 
