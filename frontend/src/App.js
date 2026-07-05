@@ -294,8 +294,8 @@ export default function App() {
                 className="font-heading font-bold text-base text-zinc-900 hover:text-amber-500 transition-colors flex items-center gap-1.5"
                 data-testid="header-phone-link"
               >
-                <Phone className="w-4 h-4 text-amber-500 animate-pulse" />
-                <span>{CONTACTS.phone}</span>
+                <Phone className="w-4 h-4 text-amber-500 animate-pulse shrink-0" />
+                <span className="whitespace-nowrap">{CONTACTS.phone}</span>
               </a>
               <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold">Иркутск • Без выходных</span>
             </div>
@@ -368,12 +368,12 @@ export default function App() {
         {/* Background Premium Light Image with subtle overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.pexels.com/photos/6024540/pexels-photo-6024540.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+            src="https://images.unsplash.com/photo-1565374395542-0ce18882c857?crop=entropy&cs=srgb&fm=jpg&w=1920&q=85" 
             alt="Светлый премиальный интерьер ФОРМАТ" 
-            className="w-full h-full object-cover object-center filter brightness-95"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-12 items-center">
@@ -467,41 +467,40 @@ export default function App() {
 
           </div>
 
-          {/* Quick Stats Sidebar (Right side, Swiss high contrast aesthetic - light version) */}
-          <div className="lg:col-span-5 bg-[#FAF9F6] border border-zinc-200 p-8 text-left space-y-8 relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full filter blur-3xl pointer-events-none"></div>
-            
-            <h3 className="font-heading font-black text-xl tracking-tight text-zinc-900 uppercase border-b border-zinc-200 pb-4">
-              Строительная группа ФОРМАТ
-            </h3>
+          {/* Right Column — Large visible interior with yellow accents */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative overflow-hidden shadow-2xl border-4 border-white group">
+              <img 
+                src="https://images.unsplash.com/photo-1565374395542-0ce18882c857?crop=entropy&cs=srgb&fm=jpg&w=1000&q=85" 
+                alt="Современный интерьер квартиры с жёлтыми акцентами от ФОРМАТ" 
+                className="w-full h-[420px] sm:h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+              />
+              {/* Yellow accent corner bars */}
+              <div className="absolute top-0 left-0 w-20 h-2 bg-amber-500"></div>
+              <div className="absolute top-0 left-0 w-2 h-20 bg-amber-500"></div>
+              <div className="absolute bottom-0 right-0 w-20 h-2 bg-amber-500"></div>
+              <div className="absolute bottom-0 right-0 w-2 h-20 bg-amber-500"></div>
 
-            <div className="space-y-6">
-              <div>
-                <span className="text-zinc-500 text-[10px] uppercase tracking-widest block mb-1 font-bold">Руководитель компании</span>
-                <span className="text-lg font-bold text-zinc-900 block">{CONTACTS.leader}</span>
-                <a href={CONTACTS.phoneRaw} className="text-amber-600 text-sm font-semibold hover:underline block mt-0.5">{CONTACTS.phone}</a>
-              </div>
-
-              <div className="h-px bg-zinc-200"></div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <span className="text-3xl font-heading font-black text-amber-500 block">7+</span>
-                  <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold">Лет опыта мастеров</span>
-                </div>
-                <div>
-                  <span className="text-3xl font-heading font-black text-amber-500 block">100%</span>
-                  <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-bold">Точность сметы</span>
-                </div>
+              {/* Yellow floating badge */}
+              <div className="absolute top-6 right-6 bg-amber-500 text-black px-4 py-2 font-heading font-black text-xs uppercase tracking-wider shadow-lg">
+                Ремонт под ключ
               </div>
             </div>
 
-            {/* SMO support card */}
-            <div className="bg-amber-500/10 border border-amber-500/20 p-4 text-center">
-              <span className="text-xs text-amber-600 font-bold uppercase tracking-wider block mb-1">🔥 Скидка для</span>
-              <span className="text-base font-extrabold text-zinc-900 block">участников СВО и их семей</span>
+            {/* SMO support card — RED style like reference */}
+            <div className="mt-[-1px] bg-gradient-to-r from-red-700 to-red-600 border-l-4 border-amber-500 p-5 flex items-center gap-4 shadow-xl relative overflow-hidden" data-testid="hero-svo-badge">
+              <div className="absolute -right-4 -top-6 w-24 h-24 bg-white/5 rounded-full pointer-events-none"></div>
+              <div className="shrink-0 w-12 h-12 bg-amber-500 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6 text-black" />
+              </div>
+              <div className="text-left relative z-10">
+                <span className="text-amber-400 text-[11px] font-black uppercase tracking-widest block leading-tight">Специальная скидка</span>
+                <span className="text-base sm:text-lg font-heading font-black text-white uppercase leading-tight block">
+                  Для участников СВО и их семей
+                </span>
+              </div>
             </div>
-
           </div>
 
         </div>
