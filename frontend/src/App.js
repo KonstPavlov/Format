@@ -196,6 +196,15 @@ export default function App() {
     scrollToSection("contact-form-section");
   };
 
+  // Prefill form for SVO discount CTA
+  const handleSvoCTA = () => {
+    setFormData((prev) => ({
+      ...prev,
+      comment: "Хочу воспользоваться скидкой для участников СВО и их семей."
+    }));
+    scrollToSection("contact-form-section");
+  };
+
   // Submit form handler
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -250,7 +259,7 @@ export default function App() {
       {/* 1. Header (Sticky - Light Glassmorphism) */}
       <header 
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/90 backdrop-blur-xl border-b border-zinc-200 py-4 shadow-md" : "bg-transparent py-6 border-b border-zinc-100"
+          scrolled ? "bg-white border-b border-zinc-200 py-4 shadow-md" : "bg-white py-6 border-b border-zinc-100"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -433,41 +442,54 @@ export default function App() {
           </div>
         </div>
 
-        {/* RIGHT — Empty renovated interior (walls, tiles, no furniture) with СКИДКА plaque */}
-        <div className="relative min-h-[420px] lg:min-h-full">
+        {/* RIGHT — Empty renovated interior (elite porcelain + door, no window) with СКИДКА plaque */}
+        <div className="relative min-h-[440px] lg:min-h-full">
           <img 
-            src="https://images.unsplash.com/photo-1762810951632-68c9f197cf33?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
-            alt="Пустая квартира после ремонта — стены и плитка от ФОРМАТ" 
+            src="https://images.unsplash.com/photo-1566272726777-91f06285e3c9?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
+            alt="Пустая квартира после ремонта — элитный керамогранит и дверь от ФОРМАТ" 
             className="absolute inset-0 w-full h-full object-cover"
             loading="eager"
           />
           {/* subtle darkening for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/20"></div>
 
-          {/* Diagonal yellow transition line at the seam (desktop) */}
-          <div className="hidden lg:block absolute top-0 left-0 h-full w-14 bg-amber-500 -translate-x-1/2 -skew-x-[7deg] z-30 shadow-2xl"></div>
-          <div className="hidden lg:block absolute top-0 left-0 h-full w-2 bg-white -translate-x-[calc(50%+1.9rem)] -skew-x-[7deg] z-30"></div>
+          {/* Transition line — vertical & narrow on desktop, horizontal on mobile */}
+          <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-2xl"></div>
+          <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-lg"></div>
 
-          {/* Big СКИДКА plaque */}
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 z-20" data-testid="hero-svo-badge">
-            <div className="bg-red-700/95 backdrop-blur-sm border-l-8 border-amber-500 px-6 sm:px-8 py-6 shadow-2xl relative overflow-hidden">
-              <div className="absolute -right-8 -top-10 w-40 h-40 bg-white/5 rounded-full pointer-events-none"></div>
-              <div className="relative z-10 flex items-center gap-5">
-                <ShieldCheck className="w-12 h-12 sm:w-16 sm:h-16 text-amber-500 shrink-0" strokeWidth={1.5} />
-                <div className="text-left">
-                  <span className="block font-heading font-black text-white uppercase leading-none text-5xl sm:text-6xl tracking-tighter">
-                    Скидка
-                  </span>
-                  <span className="block font-heading font-black text-amber-400 uppercase leading-tight text-lg sm:text-2xl mt-1 tracking-tight">
-                    для участников СВО<br className="hidden sm:block" /> и их семей
-                  </span>
-                </div>
-              </div>
+          {/* Big СКИДКА plaque — centered, on a brush stroke, no icon, clickable */}
+          <button
+            onClick={handleSvoCTA}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-[280px] sm:w-[360px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
+            data-testid="hero-svo-badge"
+          >
+            {/* Brush-stroke shape (inline SVG, real transparency) */}
+            <svg viewBox="0 0 400 210" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="brushRough" x="-10%" y="-20%" width="120%" height="140%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="3" seed="7" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="26" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+              <g filter="url(#brushRough)">
+                <rect x="20" y="34" width="360" height="150" rx="8" fill="#B01D1C" />
+                <rect x="38" y="28" width="324" height="22" rx="11" fill="#B01D1C" />
+                <rect x="38" y="172" width="336" height="20" rx="10" fill="#B01D1C" />
+              </g>
+            </svg>
+            <div className="relative z-10 text-center px-6">
+              <span className="block font-heading font-black text-white uppercase leading-none text-4xl sm:text-5xl tracking-tighter drop-shadow-md">
+                Скидка
+              </span>
+              <span className="block font-heading font-black text-white/95 uppercase leading-tight text-[11px] sm:text-sm mt-1.5 tracking-wide">
+                для участников СВО и их семей
+              </span>
             </div>
-          </div>
+          </button>
         </div>
 
       </section>
+
 
 
 
