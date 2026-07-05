@@ -116,15 +116,38 @@ export default function App() {
 
   // Carousel navigation helpers
   const nextPhoto = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     if (!selectedPhoto) return;
     setPhotoIndex((prev) => (prev + 1) % selectedPhoto.images.length);
   };
   const prevPhoto = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     if (!selectedPhoto) return;
     setPhotoIndex((prev) => (prev - 1 + selectedPhoto.images.length) % selectedPhoto.images.length);
   };
+
+  // Touch swipe support
+  const touchStartX = useRef(0);
+  const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const handleTouchEnd = (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) nextPhoto();
+      else prevPhoto();
+    }
+  };
+
+  // Keyboard navigation for the gallery
+  useEffect(() => {
+    if (!selectedPhoto) return;
+    const onKey = (e) => {
+      if (e.key === "ArrowRight") nextPhoto();
+      else if (e.key === "ArrowLeft") prevPhoto();
+      else if (e.key === "Escape") setSelectedPhoto(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedPhoto]);
 
   // Calculator states
   const [calcRoomType, setCalcRoomType] = useState("apartment"); // studio, apartment, house, commercial
@@ -442,17 +465,17 @@ export default function App() {
             </div>
 
             {/* Contacts & Social links row */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-x-8 text-xs tracking-wider pt-4 text-zinc-500 font-semibold">
-              <a href={CONTACTS.phoneRaw} className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-phone-link">
-                <Phone className="w-4 h-4 text-amber-500" />
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-5 sm:gap-4 sm:gap-x-8 text-base sm:text-xs tracking-wider pt-4 text-zinc-500 font-semibold">
+              <a href={CONTACTS.phoneRaw} className="hover:text-amber-600 flex items-center gap-3 sm:gap-2" data-testid="hero-phone-link">
+                <Phone className="w-6 h-6 sm:w-4 sm:h-4 text-amber-500 shrink-0" />
                 <span className="whitespace-nowrap">Звонок: {CONTACTS.phone}</span>
               </a>
-              <a href={CONTACTS.telegram} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-telegram-link">
-                <Send className="w-4 h-4 text-sky-500" />
+              <a href={CONTACTS.telegram} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-3 sm:gap-2" data-testid="hero-telegram-link">
+                <Send className="w-6 h-6 sm:w-4 sm:h-4 text-sky-500 shrink-0" />
                 <span>Telegram</span>
               </a>
-              <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-max-link">
-                <span className="w-5 h-5 overflow-hidden inline-flex shrink-0">
+              <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-3 sm:gap-2" data-testid="hero-max-link">
+                <span className="w-7 h-7 sm:w-5 sm:h-5 overflow-hidden inline-flex shrink-0">
                   <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover scale-[1.18]" />
                 </span>
                 <span>MAX</span>
@@ -793,7 +816,12 @@ export default function App() {
               </button>
 
               <div className="grid md:grid-cols-12">
-                <div className="md:col-span-8 bg-zinc-950 flex flex-col items-center justify-center relative">
+                <div 
+                  className="md:col-span-8 bg-zinc-950 flex flex-col items-center justify-center relative select-none"
+                  onTouchStart={handleTouchStart}
+                  onTouchEnd={handleTouchEnd}
+                  data-testid="portfolio-modal-carousel"
+                >
                   <AnimatePresence mode="wait">
                     <motion.img 
                       key={photoIndex}
