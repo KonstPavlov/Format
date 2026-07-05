@@ -1,0 +1,33 @@
+# Lightweight variant WITHOUT MongoDB — fits comfortably in ~512 MB RAM.
+# Leads are sent to e-mail only (no database backup).
+#
+# Run with:
+#   docker compose -f docker-compose.no-db.yml up -d --build
+
+services:
+  backend:
+    build: ./backend
+    container_name: format_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      # MONGO_URL is required by the app to start, but it is NOT used
+      # (the lead save is wrapped in try/except and simply skipped).
+      MONGO_URL: "mongodb://localhost:27017"
+      DB_NAME: "format_db"
+    expose:
+      - "8001"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Public URL where users access the site (used for API calls).
+        REACT_APP_BACKEND_URL: "${PUBLIC_URL:-http://localhost}"
+    container_name: format_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"

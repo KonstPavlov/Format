@@ -171,12 +171,14 @@ async def create_lead(input_lead: LeadCreate):
         email_error=email_err
     )
     
-    # Save to MongoDB
-    mongo_dict = lead_doc.to_mongo()
-    result = await db.leads.insert_one(mongo_dict)
-    
-    # Set the inserted _id
-    lead_doc.id = str(result.inserted_id)
+    # Save to MongoDB (optional — the lead is still accepted if the DB is unavailable)
+    try:
+        mongo_dict = lead_doc.to_mongo()
+        result = await db.leads.insert_one(mongo_dict)
+        lead_doc.id = str(result.inserted_id)
+    except Exception as e:
+        logger.warning(f"Could not save lead to MongoDB (running without DB?): {e}")
+
     return lead_doc
 
 @api_router.get("/leads", response_model=List[LeadDocument])

@@ -3,6 +3,8 @@ services:
     image: mongo:7
     container_name: format_mongo
     restart: unless-stopped
+    # Limit WiredTiger cache to ~256MB to keep RAM usage low on small servers
+    command: ["mongod", "--wiredTigerCacheSizeGB", "0.25"]
     volumes:
       - mongo_data:/data/db
     # Uncomment to expose Mongo on the host (usually not needed)

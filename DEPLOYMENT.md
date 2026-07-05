@@ -77,6 +77,70 @@ PUBLIC_URL=https://format-irk.ru docker compose up -d --build
 
 ---
 
+## 3b. Запуск, если код у вас в Git-репозитории
+
+На чистом сервере (Ubuntu/Debian) с установленными Docker и Docker Compose:
+
+```bash
+# 1. Клонируем репозиторий
+git clone https://github.com/ВАШ_АККАУНТ/ВАШ_РЕПО.git format
+cd format
+
+# 2. Настраиваем переменные бэкенда (SMTP и почта)
+cp backend/.env.example backend/.env
+nano backend/.env        # заполните SMTP_HOST/PORT/USER/PASSWORD и RECIPIENT_EMAIL
+
+# 3. Указываем публичный домен (вшивается в сайт при сборке)
+export PUBLIC_URL=https://format-irk.ru
+
+# 4a. Полный вариант (с базой данных)
+docker compose up -d --build
+
+# ...ИЛИ...
+
+# 4b. Лёгкий вариант без MongoDB (для сервера с 512 МБ ОЗУ)
+docker compose -f docker-compose.no-db.yml up -d --build
+```
+
+Обновление сайта после изменений в репозитории:
+
+```bash
+cd format
+git pull
+PUBLIC_URL=https://format-irk.ru docker compose up -d --build   # или -f docker-compose.no-db.yml
+```
+
+---
+
+## 3c. Сколько нужно ОЗУ и как уложиться в 512 МБ
+
+| Сервис | RAM |
+|---|---|
+| nginx (frontend) | ~15–25 МБ |
+| backend (FastAPI) | ~120–200 МБ |
+| MongoDB | ~256 МБ (ограничен в конфиге) |
+
+**Рекомендуется 1–2 ГБ.** Чтобы работать на **512 МБ**:
+
+1. **Используйте лёгкий вариант без базы** — `docker-compose.no-db.yml` (заявки только на e-mail).
+2. **Сборка фронтенда прожорлива** (`yarn build` может съесть >1 ГБ). Варианты:
+   - собрать образ на более мощной машине / в CI и запушить в реестр, либо
+   - добавить swap на сервере (см. ниже).
+3. Если используете полный вариант — кэш MongoDB уже ограничен до 256 МБ
+   (`--wiredTigerCacheSizeGB 0.25` в `docker-compose.yml`).
+
+**Добавить swap (2 ГБ) — спасает при сборке и пиках нагрузки:**
+
+```bash
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+---
+
 ## 4. HTTPS (рекомендуется)
 
 Самый простой способ — поставить перед контейнерами обратный прокси с автоматическим SSL:
