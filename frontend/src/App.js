@@ -434,8 +434,8 @@ export default function App() {
                 <span>Telegram</span>
               </a>
               <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-max-link">
-                <span className="text-amber-500 font-extrabold text-sm tracking-tighter">MAX</span>
-                <span>Профиль</span>
+                <img src="/max_logo.png" alt="MAX" className="w-5 h-5 rounded-md" />
+                <span>MAX Профиль</span>
               </a>
             </div>
 
@@ -449,7 +449,7 @@ export default function App() {
           <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-xl"></div>
           <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-md"></div>
 
-          <div className="w-full max-w-md flex flex-col items-center">
+          <div className="w-full max-w-lg flex flex-col items-center lg:-translate-x-6">
 
             {/* Framed photo — nudged above center, yellow frame */}
             <div className="relative w-full lg:-mt-12 bg-amber-500 p-3 shadow-2xl">
@@ -457,7 +457,7 @@ export default function App() {
                 <img 
                   src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85" 
                   alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
-                  className="w-full h-[300px] sm:h-[360px] object-cover"
+                  className="w-full h-[340px] sm:h-[420px] object-cover"
                   loading="eager"
                 />
                 {/* White filter — only over the photo */}
@@ -1371,8 +1371,8 @@ export default function App() {
                     className="flex items-center gap-1.5 text-amber-500 hover:text-white transition-colors"
                     data-testid="footer-max-link"
                   >
-                    <span className="font-extrabold text-xs tracking-tighter">MAX</span>
-                    <span>Профиль</span>
+                    <img src="/max_logo.png" alt="MAX" className="w-4 h-4 rounded" />
+                    <span>MAX</span>
                   </a>
                 </div>
 
@@ -1432,11 +1432,11 @@ export default function App() {
           href={CONTACTS.max}
           target="_blank"
           rel="noreferrer"
-          className="w-12 h-12 bg-[#0A0A0A] border border-zinc-800 hover:border-amber-500 text-amber-500 hover:text-amber-400 shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto"
+          className="w-12 h-12 overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto rounded-[14px]"
           title="Наш профиль на MAX"
           data-testid="floating-max-btn"
         >
-          <span className="font-heading font-black text-sm tracking-tighter">MAX</span>
+          <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover" />
         </a>
 
       </div>
