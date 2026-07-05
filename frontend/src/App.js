@@ -327,11 +327,12 @@ export default function App() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm uppercase tracking-widest font-bold text-zinc-600">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-[13px] uppercase tracking-wide font-bold text-zinc-600">
             <button onClick={() => scrollToSection("about-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-about">Преимущества</button>
             <button onClick={() => scrollToSection("pricing-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-pricing">Цены</button>
             <button onClick={() => scrollToSection("services-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-services">Услуги</button>
             <button onClick={() => scrollToSection("portfolio-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-portfolio">Портфолио</button>
+            <button onClick={() => scrollToSection("founder-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-founder">Руководитель</button>
             <button onClick={() => scrollToSection("calculator-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-calculator">Калькулятор</button>
             <button onClick={() => scrollToSection("faq-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-faq">FAQ</button>
           </nav>
@@ -385,6 +386,7 @@ export default function App() {
               <button onClick={() => scrollToSection("pricing-section")} className="hover:text-amber-500 py-2">Цены</button>
               <button onClick={() => scrollToSection("services-section")} className="hover:text-amber-500 py-2">Услуги</button>
               <button onClick={() => scrollToSection("portfolio-section")} className="hover:text-amber-500 py-2">Портфолио</button>
+              <button onClick={() => scrollToSection("founder-section")} className="hover:text-amber-500 py-2">Руководитель</button>
               <button onClick={() => scrollToSection("calculator-section")} className="hover:text-amber-500 py-2">Калькулятор</button>
               <button onClick={() => scrollToSection("faq-section")} className="hover:text-amber-500 py-2">FAQ</button>
               
