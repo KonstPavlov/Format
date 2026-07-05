@@ -434,7 +434,9 @@ export default function App() {
                 <span>Telegram</span>
               </a>
               <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-max-link">
-                <img src="/max_logo.png" alt="MAX" className="w-5 h-5 rounded-md" />
+                <span className="w-5 h-5 overflow-hidden inline-flex shrink-0">
+                  <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover scale-[1.18]" />
+                </span>
                 <span>MAX Профиль</span>
               </a>
             </div>
@@ -1371,7 +1373,9 @@ export default function App() {
                     className="flex items-center gap-1.5 text-amber-500 hover:text-white transition-colors"
                     data-testid="footer-max-link"
                   >
-                    <img src="/max_logo.png" alt="MAX" className="w-4 h-4 rounded" />
+                    <span className="w-4 h-4 overflow-hidden inline-flex shrink-0">
+                      <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover scale-[1.18]" />
+                    </span>
                     <span>MAX</span>
                   </a>
                 </div>
@@ -1432,11 +1436,11 @@ export default function App() {
           href={CONTACTS.max}
           target="_blank"
           rel="noreferrer"
-          className="w-12 h-12 overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto rounded-[14px]"
+          className="w-12 h-12 overflow-hidden shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 pointer-events-auto"
           title="Наш профиль на MAX"
           data-testid="floating-max-btn"
         >
-          <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover" />
+          <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover scale-[1.18]" />
         </a>
 
       </div>
