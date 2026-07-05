@@ -107,6 +107,24 @@ export default function App() {
   // Portfolio states
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [portfolioFilter, setPortfolioFilter] = useState("Все");
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  // Reset carousel to first image whenever a project opens
+  useEffect(() => {
+    setPhotoIndex(0);
+  }, [selectedPhoto]);
+
+  // Carousel navigation helpers
+  const nextPhoto = (e) => {
+    e.stopPropagation();
+    if (!selectedPhoto) return;
+    setPhotoIndex((prev) => (prev + 1) % selectedPhoto.images.length);
+  };
+  const prevPhoto = (e) => {
+    e.stopPropagation();
+    if (!selectedPhoto) return;
+    setPhotoIndex((prev) => (prev - 1 + selectedPhoto.images.length) % selectedPhoto.images.length);
+  };
 
   // Calculator states
   const [calcRoomType, setCalcRoomType] = useState("apartment"); // studio, apartment, house, commercial
@@ -437,7 +455,7 @@ export default function App() {
                 <span className="w-5 h-5 overflow-hidden inline-flex shrink-0">
                   <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover scale-[1.18]" />
                 </span>
-                <span>MAX Профиль</span>
+                <span>MAX</span>
               </a>
             </div>
 
@@ -712,14 +730,19 @@ export default function App() {
               >
                 <div className="aspect-[4/3] w-full overflow-hidden bg-zinc-200 relative">
                   <img 
-                    src={item.image} 
+                    src={item.images[0]} 
                     alt={item.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                     loading="lazy"
                   />
+                  {/* Photo count badge */}
+                  <div className="absolute top-3 right-3 bg-black/70 text-white text-[10px] font-bold px-2 py-1 flex items-center gap-1 tracking-wider">
+                    <GridIcon className="w-3 h-3" />
+                    <span>{item.images.length} фото</span>
+                  </div>
                   <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="text-xs font-heading tracking-widest uppercase bg-amber-500 text-black font-extrabold px-4 py-2">
-                      Увеличить
+                      Смотреть галерею
                     </span>
                   </div>
                 </div>
@@ -770,12 +793,47 @@ export default function App() {
               </button>
 
               <div className="grid md:grid-cols-12">
-                <div className="md:col-span-8 bg-zinc-950 flex items-center justify-center">
-                  <img 
-                    src={selectedPhoto.image} 
-                    alt={selectedPhoto.title} 
-                    className="max-h-[70vh] w-full object-contain"
-                  />
+                <div className="md:col-span-8 bg-zinc-950 flex flex-col items-center justify-center relative">
+                  <AnimatePresence mode="wait">
+                    <motion.img 
+                      key={photoIndex}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      src={selectedPhoto.images[photoIndex]} 
+                      alt={`${selectedPhoto.title} — фото ${photoIndex + 1}`} 
+                      className="max-h-[70vh] w-full object-contain"
+                      data-testid="portfolio-modal-image"
+                    />
+                  </AnimatePresence>
+
+                  {selectedPhoto.images.length > 1 && (
+                    <>
+                      {/* Prev button */}
+                      <button
+                        onClick={prevPhoto}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-amber-500 text-black p-3 shadow-lg transition-colors z-10"
+                        data-testid="portfolio-modal-prev"
+                        aria-label="Предыдущее фото"
+                      >
+                        <ChevronDown className="w-5 h-5 rotate-90" />
+                      </button>
+                      {/* Next button */}
+                      <button
+                        onClick={nextPhoto}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-amber-500 text-black p-3 shadow-lg transition-colors z-10"
+                        data-testid="portfolio-modal-next"
+                        aria-label="Следующее фото"
+                      >
+                        <ChevronDown className="w-5 h-5 -rotate-90" />
+                      </button>
+                      {/* Counter */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs font-bold px-3 py-1.5 tracking-wider z-10" data-testid="portfolio-modal-counter">
+                        {photoIndex + 1} / {selectedPhoto.images.length}
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div className="md:col-span-4 p-8 space-y-6 flex flex-col justify-between">
                   <div className="space-y-4">
@@ -795,6 +853,24 @@ export default function App() {
                     <p className="text-xs text-zinc-400 font-bold">
                       Локация: {selectedPhoto.desc}
                     </p>
+
+                    {/* Thumbnail strip */}
+                    {selectedPhoto.images.length > 1 && (
+                      <div className="flex gap-2 pt-1">
+                        {selectedPhoto.images.map((img, i) => (
+                          <button
+                            key={i}
+                            onClick={(e) => { e.stopPropagation(); setPhotoIndex(i); }}
+                            className={`w-14 h-14 overflow-hidden border-2 transition-all ${
+                              i === photoIndex ? "border-amber-500" : "border-transparent opacity-60 hover:opacity-100"
+                            }`}
+                            data-testid={`portfolio-modal-thumb-${i}`}
+                          >
+                            <img src={img} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <button 

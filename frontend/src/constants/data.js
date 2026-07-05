@@ -95,42 +95,66 @@ export const PORTFOLIO_ITEMS = [
     id: 1,
     title: "Минималистичная спальня в темных тонах",
     desc: "ЖК Авиатор — Площадь: 64 м²",
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1738168246881-40f35f8aba0a?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=compress&cs=tinysrgb&w=1200"
+    ],
     tags: ["Капитальный", "Спальня", "ЖК Авиатор"]
   },
   {
     id: 2,
     title: "Современная гостиная с медиа-зоной",
     desc: "Улица Лермонтова — Площадь: 78 м²",
-    image: "https://images.pexels.com/photos/13722888/pexels-photo-13722888.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/13722888/pexels-photo-13722888.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1738168279272-c08d6dd22002?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=compress&cs=tinysrgb&w=1200"
+    ],
     tags: ["Дизайнерский", "Гостиная"]
   },
   {
     id: 3,
     title: "Кухня-гостиная с барной стойкой",
     desc: "ЖК Новый — Площадь: 52 м²",
-    image: "https://images.pexels.com/photos/13722886/pexels-photo-13722886.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/13722886/pexels-photo-13722886.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1689043528099-2ba014dd7c64?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1680416124510-5eae1beca412?auto=compress&cs=tinysrgb&w=1200"
+    ],
     tags: ["Дизайнерский", "Кухня", "ЖК Новый"]
   },
   {
     id: 4,
     title: "Санузел в стиле лофт под ключ",
     desc: "ЖК Квартал — Площадь: 8 м²",
-    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=compress&cs=tinysrgb&w=1200"
+    ],
     tags: ["Санузел", "Керамогранит"]
   },
   {
     id: 5,
     title: "Светлая детская комната",
     desc: "ЖК Символ — Площадь: 45 м²",
-    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=compress&cs=tinysrgb&w=1200"
+    ],
     tags: ["Косметический", "Детская"]
   },
   {
     id: 6,
     title: "Премиальная прихожая с подсветкой",
     desc: "Улица Декабрьских Событий — Площадь: 12 м²",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=compress&cs=tinysrgb&w=1200",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=compress&cs=tinysrgb&w=1200"
+    ],
     tags: ["Дизайнерский", "Прихожая"]
   }
 ];
