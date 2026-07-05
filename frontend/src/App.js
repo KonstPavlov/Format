@@ -465,17 +465,17 @@ export default function App() {
             </div>
 
             {/* Contacts & Social links row */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-5 sm:gap-4 sm:gap-x-8 text-base sm:text-xs tracking-wider pt-4 text-zinc-500 font-semibold">
-              <a href={CONTACTS.phoneRaw} className="hover:text-amber-600 flex items-center gap-3 sm:gap-2" data-testid="hero-phone-link">
-                <Phone className="w-6 h-6 sm:w-4 sm:h-4 text-amber-500 shrink-0" />
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-5 sm:gap-4 sm:gap-x-8 text-base tracking-wider pt-4 text-zinc-500 font-semibold">
+              <a href={CONTACTS.phoneRaw} className="hover:text-amber-600 flex items-center gap-3" data-testid="hero-phone-link">
+                <Phone className="w-6 h-6 text-amber-500 shrink-0" />
                 <span className="whitespace-nowrap">Звонок: {CONTACTS.phone}</span>
               </a>
-              <a href={CONTACTS.telegram} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-3 sm:gap-2" data-testid="hero-telegram-link">
-                <Send className="w-6 h-6 sm:w-4 sm:h-4 text-sky-500 shrink-0" />
+              <a href={CONTACTS.telegram} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-3" data-testid="hero-telegram-link">
+                <Send className="w-6 h-6 text-sky-500 shrink-0" />
                 <span>Telegram</span>
               </a>
-              <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-3 sm:gap-2" data-testid="hero-max-link">
-                <span className="w-7 h-7 sm:w-5 sm:h-5 overflow-hidden inline-flex shrink-0">
+              <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-3" data-testid="hero-max-link">
+                <span className="w-7 h-7 overflow-hidden inline-flex shrink-0">
                   <img src="/max_logo.png" alt="MAX" className="w-full h-full object-cover scale-[1.18]" />
                 </span>
                 <span>MAX</span>
@@ -492,15 +492,15 @@ export default function App() {
           <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-xl"></div>
           <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-md"></div>
 
-          <div className="w-full max-w-lg flex flex-col items-center lg:-translate-x-6">
+          <div className="w-full max-w-lg lg:max-w-xl flex flex-col items-center lg:-translate-x-24">
 
             {/* Framed photo — nudged above center, yellow frame */}
-            <div className="relative w-full lg:-mt-12 bg-amber-500 p-3 shadow-2xl">
+            <div className="relative w-full lg:-mt-12 bg-amber-500 p-3 lg:p-4 shadow-2xl">
               <div className="relative overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85" 
                   alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
-                  className="w-full h-[340px] sm:h-[420px] object-cover"
+                  className="w-full h-[340px] sm:h-[420px] lg:h-[520px] object-cover"
                   loading="eager"
                 />
                 {/* White filter — only over the photo */}
@@ -511,7 +511,7 @@ export default function App() {
             {/* Discount plaque — below the photo, bordeaux text, yellow brush, tilted */}
             <button
               onClick={handleSvoCTA}
-              className="relative -mt-6 rotate-[5deg] z-30 w-[250px] sm:w-[290px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
+              className="relative -mt-6 rotate-[5deg] z-30 w-[250px] sm:w-[290px] lg:w-[350px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
               data-testid="hero-svo-badge"
             >
               <svg viewBox="0 0 300 260" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
