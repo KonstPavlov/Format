@@ -362,25 +362,13 @@ export default function App() {
       </AnimatePresence>
 
 
-      {/* 2. Hero Section - Bright Premium Light Style */}
-      <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-white">
-        
-        {/* Background Premium Light Image with subtle overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1565374395542-0ce18882c857?crop=entropy&cs=srgb&fm=jpg&w=1920&q=85" 
-            alt="Светлый премиальный интерьер ФОРМАТ" 
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent"></div>
-        </div>
+      {/* 2. Hero Section — Split: white text left, diagonal yellow divider, empty interior right */}
+      <section className="relative min-h-screen grid lg:grid-cols-2 bg-white overflow-hidden">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Main Info */}
-          <div className="lg:col-span-7 space-y-8 text-left">
-            
+        {/* LEFT — Text on white background */}
+        <div className="relative z-20 bg-white flex items-center pt-28 pb-16 lg:pt-24 lg:pb-24 px-5 sm:px-8 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-16">
+          <div className="w-full max-w-xl space-y-8 text-left">
+
             <div className="inline-flex items-center gap-2 text-amber-600 font-heading text-xs font-bold tracking-[0.25em] uppercase border border-amber-500/30 bg-amber-500/5 px-3 py-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               <span>Премиальный ремонт квартир в Иркутске</span>
@@ -394,24 +382,18 @@ export default function App() {
               в Иркутске
             </h1>
 
-            <p className="font-body text-base sm:text-lg text-zinc-600 max-w-xl leading-relaxed">
+            <p className="font-body text-base sm:text-lg text-zinc-600 leading-relaxed">
               Создаем эксклюзивные, комфортные и функциональные интерьеры любой сложности. Работаем строго по официальному договору, с фиксированной сметой и железным соблюдением сроков.
             </p>
 
-            {/* Bullet points from problem statement */}
+            {/* Bullet points */}
             <div className="grid sm:grid-cols-3 gap-4 py-2 border-y border-zinc-200">
-              <div className="flex items-center gap-2.5 text-sm text-zinc-800">
-                <div className="w-5 h-5 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 font-bold text-xs">✓</div>
-                <span>Бесплатный замер</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-sm text-zinc-800">
-                <div className="w-5 h-5 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 font-bold text-xs">✓</div>
-                <span>Бесплатная консультация</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-sm text-zinc-800">
-                <div className="w-5 h-5 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 font-bold text-xs">✓</div>
-                <span>Смета в день обращения</span>
-              </div>
+              {["Бесплатный замер", "Бесплатная консультация", "Смета в день обращения"].map((b) => (
+                <div key={b} className="flex items-center gap-2.5 text-sm text-zinc-800">
+                  <div className="w-5 h-5 bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 font-bold text-xs shrink-0">✓</div>
+                  <span>{b}</span>
+                </div>
+              ))}
             </div>
 
             {/* CTA Buttons */}
@@ -423,7 +405,6 @@ export default function App() {
               >
                 Получить консультацию
               </button>
-              
               <button 
                 onClick={() => scrollToSection("calculator-section")}
                 className="bg-transparent border border-zinc-300 hover:border-amber-500 hover:text-amber-600 text-zinc-900 font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading"
@@ -433,78 +414,61 @@ export default function App() {
               </button>
             </div>
 
-            {/* Contacts & Social links row from references */}
+            {/* Contacts & Social links row */}
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-xs tracking-wider pt-4 text-zinc-500 font-semibold">
-              <a 
-                href={CONTACTS.phoneRaw} 
-                className="hover:text-amber-600 flex items-center gap-2"
-                data-testid="hero-phone-link"
-              >
+              <a href={CONTACTS.phoneRaw} className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-phone-link">
                 <Phone className="w-4 h-4 text-amber-500" />
-                <span>Звонок: {CONTACTS.phone}</span>
+                <span className="whitespace-nowrap">Звонок: {CONTACTS.phone}</span>
               </a>
-              <a 
-                href={CONTACTS.telegram} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="hover:text-amber-600 flex items-center gap-2"
-                data-testid="hero-telegram-link"
-              >
+              <a href={CONTACTS.telegram} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-telegram-link">
                 <Send className="w-4 h-4 text-sky-500" />
                 <span>Telegram</span>
               </a>
-              <a 
-                href={CONTACTS.max} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="hover:text-amber-600 flex items-center gap-2"
-                data-testid="hero-max-link"
-              >
+              <a href={CONTACTS.max} target="_blank" rel="noreferrer" className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-max-link">
                 <span className="text-amber-500 font-extrabold text-sm tracking-tighter">MAX</span>
                 <span>Профиль</span>
               </a>
             </div>
 
           </div>
+        </div>
 
-          {/* Right Column — Large visible interior with yellow accents */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative overflow-hidden shadow-2xl border-4 border-white group">
-              <img 
-                src="https://images.unsplash.com/photo-1565374395542-0ce18882c857?crop=entropy&cs=srgb&fm=jpg&w=1000&q=85" 
-                alt="Современный интерьер квартиры с жёлтыми акцентами от ФОРМАТ" 
-                className="w-full h-[420px] sm:h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="eager"
-              />
-              {/* Yellow accent corner bars */}
-              <div className="absolute top-0 left-0 w-20 h-2 bg-amber-500"></div>
-              <div className="absolute top-0 left-0 w-2 h-20 bg-amber-500"></div>
-              <div className="absolute bottom-0 right-0 w-20 h-2 bg-amber-500"></div>
-              <div className="absolute bottom-0 right-0 w-2 h-20 bg-amber-500"></div>
+        {/* RIGHT — Empty renovated interior (walls, tiles, no furniture) with СКИДКА plaque */}
+        <div className="relative min-h-[420px] lg:min-h-full">
+          <img 
+            src="https://images.unsplash.com/photo-1762810951632-68c9f197cf33?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
+            alt="Пустая квартира после ремонта — стены и плитка от ФОРМАТ" 
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+          {/* subtle darkening for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
 
-              {/* Yellow floating badge */}
-              <div className="absolute top-6 right-6 bg-amber-500 text-black px-4 py-2 font-heading font-black text-xs uppercase tracking-wider shadow-lg">
-                Ремонт под ключ
-              </div>
-            </div>
+          {/* Diagonal yellow transition line at the seam (desktop) */}
+          <div className="hidden lg:block absolute top-0 left-0 h-full w-14 bg-amber-500 -translate-x-1/2 -skew-x-[7deg] z-30 shadow-2xl"></div>
+          <div className="hidden lg:block absolute top-0 left-0 h-full w-2 bg-white -translate-x-[calc(50%+1.9rem)] -skew-x-[7deg] z-30"></div>
 
-            {/* SMO support card — RED style like reference */}
-            <div className="mt-[-1px] bg-gradient-to-r from-red-700 to-red-600 border-l-4 border-amber-500 p-5 flex items-center gap-4 shadow-xl relative overflow-hidden" data-testid="hero-svo-badge">
-              <div className="absolute -right-4 -top-6 w-24 h-24 bg-white/5 rounded-full pointer-events-none"></div>
-              <div className="shrink-0 w-12 h-12 bg-amber-500 flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-black" />
-              </div>
-              <div className="text-left relative z-10">
-                <span className="text-amber-400 text-[11px] font-black uppercase tracking-widest block leading-tight">Специальная скидка</span>
-                <span className="text-base sm:text-lg font-heading font-black text-white uppercase leading-tight block">
-                  Для участников СВО и их семей
-                </span>
+          {/* Big СКИДКА plaque */}
+          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 z-20" data-testid="hero-svo-badge">
+            <div className="bg-red-700/95 backdrop-blur-sm border-l-8 border-amber-500 px-6 sm:px-8 py-6 shadow-2xl relative overflow-hidden">
+              <div className="absolute -right-8 -top-10 w-40 h-40 bg-white/5 rounded-full pointer-events-none"></div>
+              <div className="relative z-10 flex items-center gap-5">
+                <ShieldCheck className="w-12 h-12 sm:w-16 sm:h-16 text-amber-500 shrink-0" strokeWidth={1.5} />
+                <div className="text-left">
+                  <span className="block font-heading font-black text-white uppercase leading-none text-5xl sm:text-6xl tracking-tighter">
+                    Скидка
+                  </span>
+                  <span className="block font-heading font-black text-amber-400 uppercase leading-tight text-lg sm:text-2xl mt-1 tracking-tight">
+                    для участников СВО<br className="hidden sm:block" /> и их семей
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
+
       </section>
+
 
 
       {/* 3. Advantages Section (Light Gray Background) */}
