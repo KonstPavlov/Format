@@ -445,8 +445,8 @@ export default function App() {
         {/* RIGHT — Empty luxury interior (elite marble/porcelain + door, no window) with discount plaque */}
         <div className="relative min-h-[440px] lg:min-h-full">
           <img 
-            src="https://images.unsplash.com/photo-1774876549429-97c4e83eb557?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
-            alt="Элитный интерьер после ремонта — керамогранит и дверь от ФОРМАТ" 
+            src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
+            alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
             className="absolute inset-0 w-full h-full object-cover contrast-110 saturate-110 brightness-95"
             loading="eager"
           />
@@ -461,28 +461,28 @@ export default function App() {
           {/* Discount plaque — centered, yellow brush stroke, red text, tilted (right edge lower), clickable */}
           <button
             onClick={handleSvoCTA}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[5deg] z-30 w-[330px] sm:w-[440px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[5deg] z-30 w-[250px] sm:w-[300px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
             data-testid="hero-svo-badge"
           >
             {/* Yellow brush-stroke shape (inline SVG, real transparency) */}
-            <svg viewBox="0 0 440 210" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
+            <svg viewBox="0 0 300 260" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
               <defs>
-                <filter id="brushRough" x="-10%" y="-20%" width="120%" height="140%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="3" seed="7" result="noise" />
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="24" xChannelSelector="R" yChannelSelector="G" />
+                <filter id="brushRough" x="-12%" y="-15%" width="124%" height="130%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="3" seed="7" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" />
                 </filter>
               </defs>
               <g filter="url(#brushRough)">
-                <rect x="10" y="28" width="420" height="156" rx="8" fill="#F59E0B" />
-                <rect x="30" y="20" width="380" height="24" rx="12" fill="#F59E0B" />
-                <rect x="30" y="170" width="392" height="22" rx="11" fill="#F59E0B" />
+                <rect x="6" y="18" width="288" height="224" rx="8" fill="#F59E0B" />
+                <rect x="18" y="10" width="264" height="26" rx="13" fill="#F59E0B" />
+                <rect x="18" y="226" width="270" height="26" rx="13" fill="#F59E0B" />
               </g>
             </svg>
-            <div className="relative z-10 text-center px-8">
-              <span className="block font-heading font-black text-red-700 uppercase leading-none text-3xl sm:text-4xl tracking-tighter">
+            <div className="relative z-10 text-center px-2 py-8">
+              <span className="block font-poster font-bold text-[#D7263D] uppercase leading-none text-4xl sm:text-5xl tracking-tight">
                 Скидки
               </span>
-              <span className="block font-heading font-black text-red-700 uppercase leading-tight text-base sm:text-xl mt-1 tracking-tight">
+              <span className="block font-poster font-semibold text-[#D7263D] uppercase leading-tight text-lg sm:text-xl mt-2 tracking-wide">
                 молодым семьям
               </span>
             </div>
