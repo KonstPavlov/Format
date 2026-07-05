@@ -406,17 +406,17 @@ export default function App() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-4">
               <button 
                 onClick={() => scrollToSection("contact-form-section")}
-                className="bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading"
+                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center"
                 data-testid="hero-consult-button"
               >
                 Получить консультацию
               </button>
               <button 
                 onClick={() => scrollToSection("calculator-section")}
-                className="bg-transparent border border-zinc-300 hover:border-amber-500 hover:text-amber-600 text-zinc-900 font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading"
+                className="w-full sm:w-auto bg-transparent border border-zinc-300 hover:border-amber-500 hover:text-amber-600 text-zinc-900 font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center"
                 data-testid="hero-calc-button"
               >
                 Рассчитать стоимость
@@ -424,7 +424,7 @@ export default function App() {
             </div>
 
             {/* Contacts & Social links row */}
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-xs tracking-wider pt-4 text-zinc-500 font-semibold">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-x-8 text-xs tracking-wider pt-4 text-zinc-500 font-semibold">
               <a href={CONTACTS.phoneRaw} className="hover:text-amber-600 flex items-center gap-2" data-testid="hero-phone-link">
                 <Phone className="w-4 h-4 text-amber-500" />
                 <span className="whitespace-nowrap">Звонок: {CONTACTS.phone}</span>
@@ -442,51 +442,59 @@ export default function App() {
           </div>
         </div>
 
-        {/* RIGHT — Empty luxury interior (elite marble/porcelain + door, no window) with discount plaque */}
-        <div className="relative min-h-[440px] lg:min-h-full">
-          <img 
-            src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85" 
-            alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
-            className="absolute inset-0 w-full h-full object-cover contrast-110 saturate-110 brightness-95"
-            loading="eager"
-          />
-          {/* Warm cinematic filter overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-900/25 via-transparent to-zinc-900/35 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-black/15"></div>
+        {/* RIGHT — Framed Scandinavian interior above center, discount plaque below */}
+        <div className="relative flex flex-col items-center justify-center bg-white px-6 sm:px-10 lg:px-14 py-16 lg:py-24">
 
           {/* Transition line — vertical & narrow on desktop, horizontal on mobile */}
-          <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-2xl"></div>
-          <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-lg"></div>
+          <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-xl"></div>
+          <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-md"></div>
 
-          {/* Discount plaque — centered, yellow brush stroke, red text, tilted (right edge lower), clickable */}
-          <button
-            onClick={handleSvoCTA}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[5deg] z-30 w-[250px] sm:w-[300px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
-            data-testid="hero-svo-badge"
-          >
-            {/* Yellow brush-stroke shape (inline SVG, real transparency) */}
-            <svg viewBox="0 0 300 260" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <filter id="brushRough" x="-12%" y="-15%" width="124%" height="130%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="3" seed="7" result="noise" />
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" />
-                </filter>
-              </defs>
-              <g filter="url(#brushRough)">
-                <rect x="6" y="18" width="288" height="224" rx="8" fill="#F59E0B" />
-                <rect x="18" y="10" width="264" height="26" rx="13" fill="#F59E0B" />
-                <rect x="18" y="226" width="270" height="26" rx="13" fill="#F59E0B" />
-              </g>
-            </svg>
-            <div className="relative z-10 text-center px-2 py-8">
-              <span className="block font-poster font-bold text-[#D7263D] uppercase leading-none text-4xl sm:text-5xl tracking-tight">
-                Скидки
-              </span>
-              <span className="block font-poster font-semibold text-[#D7263D] uppercase leading-tight text-lg sm:text-xl mt-2 tracking-wide">
-                молодым семьям
-              </span>
+          <div className="w-full max-w-md flex flex-col items-center">
+
+            {/* Framed photo — nudged above center, yellow frame */}
+            <div className="relative w-full lg:-mt-12 bg-amber-500 p-3 shadow-2xl">
+              <div className="relative overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85" 
+                  alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
+                  className="w-full h-[300px] sm:h-[360px] object-cover"
+                  loading="eager"
+                />
+                {/* White filter — only over the photo */}
+                <div className="absolute inset-0 bg-white/25 pointer-events-none"></div>
+              </div>
             </div>
-          </button>
+
+            {/* Discount plaque — below the photo, bordeaux text, yellow brush, tilted */}
+            <button
+              onClick={handleSvoCTA}
+              className="relative -mt-6 rotate-[5deg] z-30 w-[250px] sm:w-[290px] flex items-center justify-center transition-transform duration-300 hover:scale-105 focus:outline-none"
+              data-testid="hero-svo-badge"
+            >
+              <svg viewBox="0 0 300 260" className="absolute inset-0 w-full h-full drop-shadow-2xl" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <filter id="brushRough" x="-12%" y="-15%" width="124%" height="130%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="3" seed="7" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                </defs>
+                <g filter="url(#brushRough)">
+                  <rect x="6" y="18" width="288" height="224" rx="8" fill="#F59E0B" />
+                  <rect x="18" y="10" width="264" height="26" rx="13" fill="#F59E0B" />
+                  <rect x="18" y="226" width="270" height="26" rx="13" fill="#F59E0B" />
+                </g>
+              </svg>
+              <div className="relative z-10 text-center px-2 py-8">
+                <span className="block font-poster font-bold text-[#8C1230] uppercase leading-none text-4xl sm:text-5xl tracking-tight">
+                  Скидки
+                </span>
+                <span className="block font-poster font-semibold text-[#8C1230] uppercase leading-tight text-lg sm:text-xl mt-2 tracking-wide">
+                  молодым семьям
+                </span>
+              </div>
+            </button>
+
+          </div>
         </div>
 
       </section>
