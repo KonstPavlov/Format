@@ -338,7 +338,7 @@ export default function App() {
           </nav>
 
           {/* Contacts & CTA */}
-          <div className="hidden sm:flex items-center gap-6">
+          <div className="hidden sm:flex items-center gap-6 lg:pl-8 xl:pl-12">
             <div className="flex flex-col items-end">
               <a 
                 href={CONTACTS.phoneRaw} 
