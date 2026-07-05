@@ -1195,6 +1195,69 @@ export default function App() {
         </div>
       </section>
 
+      {/* 8.5 Founder / Leader Section */}
+      <section id="founder-section" className="py-24 sm:py-32 border-t border-zinc-200 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            {/* Photo */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative bg-amber-500 p-3 sm:p-4 shadow-2xl max-w-md mx-auto lg:mx-0">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_capella-builds/artifacts/brh3ne7f_GLA_5279%20%281%29%20%283%29%20%281%29.jpg"
+                  alt="Дмитрий Дианов — руководитель компании ФОРМАТ"
+                  className="w-full h-[420px] sm:h-[520px] object-cover object-top"
+                  loading="lazy"
+                  data-testid="founder-photo"
+                />
+                <div className="absolute -bottom-5 -right-2 sm:right-4 bg-zinc-900 text-white px-5 py-3 shadow-xl">
+                  <span className="block font-heading font-black text-sm uppercase tracking-wider">Дмитрий Дианов</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-amber-500 font-bold mt-0.5">Руководитель · Прораб</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="lg:col-span-7 text-left space-y-6">
+              <span className="text-xs font-bold tracking-[0.25em] uppercase text-amber-600 block">Руководитель компании</span>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-zinc-900 leading-none">
+                Дмитрий Дианов
+              </h2>
+              <div className="w-16 h-1 bg-amber-500"></div>
+
+              <div className="space-y-5 text-sm sm:text-base text-zinc-600 font-body leading-relaxed max-w-2xl">
+                <p>
+                  Руководитель компании и опытный прораб, известный в Иркутске благодаря успешной реализации проектов различной сложности.
+                </p>
+                <p>
+                  С самого детства Дмитрий был связан со строительством и ремонтом, поэтому отлично понимает все этапы работы — от подготовки объекта до финальной сдачи заказчику. Многолетний практический опыт позволяет находить эффективные решения даже в нестандартных ситуациях и контролировать качество на каждом этапе ремонта.
+                </p>
+                <p>
+                  Главный принцип работы Дмитрия — <span className="text-zinc-900 font-semibold">честность, ответственность и внимание к деталям</span>. Каждый объект выполняется так, словно ремонт делается для собственной семьи.
+                </p>
+                <p>
+                  Под его руководством команда стремится не просто выполнить ремонт, а создать комфортное, надежное и современное пространство, в котором приятно жить долгие годы.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <a
+                  href={CONTACTS.phoneRaw}
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-xs tracking-wider px-7 py-4 transition-all duration-300 font-heading inline-flex items-center gap-2"
+                  data-testid="founder-call-button"
+                >
+                  <Phone className="w-4 h-4" />
+                  Связаться с руководителем
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+
 
       {/* 9. Reviews (Отзывы) */}
       <section className="py-24 sm:py-32 border-t border-zinc-200 bg-zinc-50">
