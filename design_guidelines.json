@@ -1,0 +1,128 @@
+{
+  "project": {
+    "name": "ФОРМАТ",
+    "city": "Иркутск",
+    "contacts": {
+      "phone": "+7 950 110-14-45",
+      "telegram": "https://t.me/PodvalCapellaD",
+      "max": "https://max.ru/u/f9LHodD0cOKMcRZ4RJ0RL-s3H_v3p9p-hRQ1Nuvuu-nRHhvXn-nyNarjedE",
+      "email": "lax-jakal@yandex.ru"
+    },
+    "theme": "dark",
+    "archetype": "Luxury & Swiss High-Contrast (Custom Dark Architecture)",
+    "description": "Premium turnkey apartment renovation company in Irkutsk."
+  },
+  "colors": {
+    "background": {
+      "main": "#0A0A0A",
+      "secondary": "#141414",
+      "tertiary": "#1F1F1F"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#71717A"
+    },
+    "accent": {
+      "main": "#F59E0B",
+      "hover": "#D97706",
+      "muted": "rgba(245, 158, 11, 0.2)"
+    },
+    "border": {
+      "light": "rgba(255,255,255,0.1)",
+      "medium": "rgba(255,255,255,0.2)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Cabinet Grotesk",
+      "body": "Manrope"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-none text-white",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white",
+      "h3": "text-xl sm:text-2xl font-semibold text-white",
+      "h4": "text-lg sm:text-xl font-medium text-white",
+      "body": "text-base text-zinc-400 leading-relaxed",
+      "overline": "text-xs font-bold tracking-[0.2em] uppercase text-amber-500"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32",
+    "grid_gaps": "gap-8 md:gap-12",
+    "border_radius": {
+      "buttons": "rounded-none",
+      "cards": "rounded-none",
+      "inputs": "rounded-none"
+    },
+    "rationale": "Using completely sharp edges (rounded-none) and geometric alignment to evoke architectural precision and brutalist luxury. Everything must align perfectly on a grid."
+  },
+  "surfaces_and_themes": {
+    "header": {
+      "type": "glassmorphism",
+      "classes": "fixed top-0 w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/10"
+    },
+    "cards": {
+      "type": "grid_borders",
+      "classes": "bg-[#141414] border border-white/10 p-8 hover:-translate-y-1 transition-transform duration-300"
+    },
+    "interactive": {
+      "buttons_primary": "bg-amber-500 text-black font-bold hover:bg-amber-600 transition-colors",
+      "buttons_secondary": "bg-transparent border border-white/20 text-white hover:border-amber-500 hover:text-amber-500 transition-colors"
+    }
+  },
+  "media": {
+    "images": {
+      "hero_bg": {
+        "url": "https://images.pexels.com/photos/13722886/pexels-photo-13722886.jpeg",
+        "description": "Sleek modern dark living room. Apply bg-black/50 overlay."
+      },
+      "about_section": {
+        "url": "https://images.pexels.com/photos/34573691/pexels-photo-34573691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Architectural blueprints. Used for 'Approach' or 'Calculator' section."
+      },
+      "services_bg": {
+        "url": "https://images.pexels.com/photos/6024540/pexels-photo-6024540.jpeg",
+        "description": "Renovation tools for the services/pricing section context."
+      },
+      "portfolio": [
+        {
+          "url": "https://images.unsplash.com/photo-1640357897497-599b4fc84f51",
+          "description": "Portfolio item 1 - Minimalist dark room"
+        },
+        {
+          "url": "https://images.pexels.com/photos/13722888/pexels-photo-13722888.jpeg",
+          "description": "Portfolio item 2 - TV wall modern setup"
+        },
+        {
+          "url": "https://images.pexels.com/photos/13722886/pexels-photo-13722886.jpeg",
+          "description": "Portfolio item 3 - Living room angle"
+        }
+      ]
+    },
+    "icons": {
+      "library": "lucide-react",
+      "usage": "Use stroke-width 1.5 for a sharp, architectural feel."
+    }
+  },
+  "components": {
+    "hero": "Asymmetrical layout. Large H1 on the left, geometric stats on the right. Heavy dark overlay over the hero image (bg-black/60) to ensure white and amber text pops perfectly.",
+    "calculator": "Use Shadcn Slider for square meters. Shadcn RadioGroup for repair type (Cosmetic, Overhaul, Premium). Dark inputs. Output estimated price instantly. Add a 'Request Measurement' CTA button.",
+    "pricing_cards": "Three distinct columns. Border-collapse style grid or separate cards with sharp edges. High contrast for the 'Premium' tier using a subtle amber inner border.",
+    "portfolio_gallery": "Bento grid (TETRIS MODE). Images must be object-cover, grayscale filter on hover, or zoom-in effect. Implement a Modal/Dialog on click to view full resolution (Zoom functionality).",
+    "order_form": "Shadcn Form. Input fields for Name, Phone. Submit button triggers async SMTP and MongoDB fallback. Add data-testid to all inputs.",
+    "testimonials": "Simple, typography-driven quotes. Large quote marks (text-8xl text-white/5 absolute).",
+    "faq": "Shadcn Accordion. Minimalist styling, border-b border-white/10 only. Amber icons on open."
+  },
+  "technical_instructions_for_main_agent": [
+    "Install 'Cabinet Grotesk' and 'Manrope' fonts (via Google Fonts or local font face).",
+    "Configure Tailwind with the exact colors from this JSON.",
+    "All cards and buttons must use rounded-none for the architectural aesthetic.",
+    "For the interactive calculator, use React state to instantly calculate the price based on Area * PricePerSqm + TypeMultiplier.",
+    "For the Order Form, wire it up to a backend route that handles SMTP sending to lax-jakal@yandex.ru and a MongoDB insert as a fallback.",
+    "Add 'data-testid' attributes to all buttons, form inputs, and accordion triggers.",
+    "Never use generic placeholder images, use only the URLs provided in the media section.",
+    "Use framer-motion for smooth entrance animations (staggered fade-up for portfolio items)."
+  ]
+}
