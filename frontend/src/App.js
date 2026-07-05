@@ -327,7 +327,7 @@ export default function App() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-[13px] uppercase tracking-wide font-bold text-zinc-600">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 lg:pl-8 xl:pl-12 text-[13px] uppercase tracking-wide font-bold text-zinc-600">
             <button onClick={() => scrollToSection("about-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-about">Преимущества</button>
             <button onClick={() => scrollToSection("pricing-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-pricing">Цены</button>
             <button onClick={() => scrollToSection("services-section")} className="hover:text-amber-500 transition-colors" data-testid="nav-link-services">Услуги</button>
