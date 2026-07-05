@@ -99,8 +99,8 @@ async def send_lead_email(name: str, phone: str, comment: Optional[str], calcula
     recipient_email = os.environ.get("RECIPIENT_EMAIL", "lax-jakal@yandex.ru")
 
     if not smtp_host or not smtp_user or not smtp_password:
-        logger.warning("SMTP settings are incomplete. Skipping actual email sending, falling back to db log.")
-        return False, "SMTP settings not configured in .env"
+        logger.warning("SMTP is not configured — running in NO-EMAIL mode. Lead is logged below instead of being emailed.")
+        return False, "SMTP not configured (no-email mode)"
 
     message = EmailMessage()
     message["From"] = smtp_user
@@ -170,7 +170,13 @@ async def create_lead(input_lead: LeadCreate):
         email_sent=email_sent,
         email_error=email_err
     )
-    
+
+    # Always log the lead so it is never lost (useful in no-email mode)
+    logger.info(
+        "=== НОВАЯ ЗАЯВКА === Имя: %s | Телефон: %s | Комментарий: %s | Email отправлен: %s",
+        input_lead.name, input_lead.phone, input_lead.comment or "-", email_sent
+    )
+
     # Save to MongoDB (optional — the lead is still accepted if the DB is unavailable)
     try:
         mongo_dict = lead_doc.to_mongo()
