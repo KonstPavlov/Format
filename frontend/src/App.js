@@ -1308,18 +1308,18 @@ export default function App() {
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <button
                 onClick={handleVisitCTA}
-                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-sm tracking-wider px-10 py-6 transition-all duration-300 font-heading text-center inline-flex items-center justify-center gap-2.5"
                 data-testid="visit-cta-button"
               >
-                <MapPin className="w-4 h-4" />
+                <MapPin className="w-5 h-5" />
                 Записаться на просмотр объекта
               </button>
               <a
                 href={CONTACTS.phoneRaw}
-                className="w-full sm:w-auto bg-transparent border border-zinc-600 hover:border-amber-500 text-white hover:text-amber-500 font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-transparent border border-zinc-600 hover:border-amber-500 text-white hover:text-amber-500 font-bold uppercase text-sm tracking-wider px-10 py-6 transition-all duration-300 font-heading text-center inline-flex items-center justify-center gap-2.5"
                 data-testid="visit-call-button"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-5 h-5" />
                 Позвонить
               </a>
             </div>
