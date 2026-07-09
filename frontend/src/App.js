@@ -99,7 +99,7 @@ const renderServiceIcon = (iconName, props = {}) => {
   return <IconComponent {...props} />;
 };
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://capella-builds.preview.emergentagent.com";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API = `${BACKEND_URL}/api`;
 
 export default function App() {
@@ -1238,7 +1238,7 @@ export default function App() {
             <div className="lg:col-span-5 relative">
               <div className="relative bg-amber-500 p-3 sm:p-4 shadow-2xl max-w-md mx-auto lg:mx-0">
                 <img
-                  src="https://customer-assets.emergentagent.com/job_capella-builds/artifacts/brh3ne7f_GLA_5279%20%281%29%20%283%29%20%281%29.jpg"
+                  src="/images/founder.jpg"
                   alt="Дмитрий Дианов — руководитель компании ФОРМАТ"
                   className="w-full h-[420px] sm:h-[520px] object-cover object-top"
                   loading="lazy"

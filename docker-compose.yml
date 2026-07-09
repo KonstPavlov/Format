@@ -3,8 +3,16 @@ services:
     build: ./backend
     container_name: format_backend
     restart: unless-stopped
-    env_file:
-      - ./backend/.env
+    # Runs out-of-the-box with zero config (no-email mode: leads are logged).
+    # To enable email delivery, set these variables in a root ".env" file or
+    # export them in the shell before running docker compose. See README.
+    environment:
+      CORS_ORIGINS: "*"
+      RECIPIENT_EMAIL: "${RECIPIENT_EMAIL:-lax-jakal@yandex.ru}"
+      SMTP_HOST: "${SMTP_HOST:-}"
+      SMTP_PORT: "${SMTP_PORT:-465}"
+      SMTP_USER: "${SMTP_USER:-}"
+      SMTP_PASSWORD: "${SMTP_PASSWORD:-}"
     expose:
       - "8001"
 
@@ -12,9 +20,10 @@ services:
     build:
       context: ./frontend
       args:
-        # Public URL where users access the site (used for API calls).
-        # Set this to your real domain, e.g. https://format-irk.ru
-        REACT_APP_BACKEND_URL: "${PUBLIC_URL:-http://localhost}"
+        # Public URL for API calls. Leave empty to use same-origin "/api"
+        # (works on any domain/IP because nginx proxies /api to the backend).
+        # Optionally set PUBLIC_URL=https://your-domain.com if fronting elsewhere.
+        REACT_APP_BACKEND_URL: "${PUBLIC_URL:-}"
     container_name: format_frontend
     restart: unless-stopped
     depends_on:

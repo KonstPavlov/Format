@@ -3,17 +3,17 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+COPY package.json package-lock.json .npmrc ./
+RUN npm ci
 
 COPY . .
 
 # Public backend URL is baked in at build time (used by the React app).
 # Pass it via: --build-arg REACT_APP_BACKEND_URL=https://your-domain.com
-ARG REACT_APP_BACKEND_URL
+ARG REACT_APP_BACKEND_URL=""
 ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
 
-RUN yarn build
+RUN npm run build
 
 # ---- Serve stage ----
 FROM nginx:alpine
