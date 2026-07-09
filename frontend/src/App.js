@@ -843,7 +843,7 @@ export default function App() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white border border-zinc-200 max-w-4xl w-full text-left relative overflow-hidden"
+              className="bg-white border border-zinc-200 max-w-3xl w-full text-left relative overflow-y-auto max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
@@ -854,9 +854,9 @@ export default function App() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="grid md:grid-cols-12">
+              <div className="flex flex-col">
                 <div 
-                  className="md:col-span-8 bg-zinc-950 flex flex-col items-center justify-center relative select-none"
+                  className="w-full bg-zinc-950 flex flex-col items-center justify-center relative select-none"
                   onTouchStart={handleTouchStart}
                   onTouchEnd={handleTouchEnd}
                   data-testid="portfolio-modal-carousel"
@@ -870,7 +870,7 @@ export default function App() {
                       transition={{ duration: 0.2 }}
                       src={selectedPhoto.images[photoIndex]} 
                       alt={`${selectedPhoto.title} — фото ${photoIndex + 1}`} 
-                      className="max-h-[70vh] w-full object-contain"
+                      className="max-h-[55vh] w-full object-contain"
                       data-testid="portfolio-modal-image"
                       onError={handleImgError}
                     />
@@ -903,7 +903,7 @@ export default function App() {
                     </>
                   )}
                 </div>
-                <div className="md:col-span-4 p-8 space-y-6 flex flex-col justify-between max-h-[75vh] overflow-y-auto">
+                <div className="w-full p-8 space-y-6 flex flex-col justify-between">
                   <div className="space-y-4">
                     <div className="flex flex-wrap gap-2">
                       {selectedPhoto.tags.map((tag, i) => (
@@ -916,9 +916,9 @@ export default function App() {
                       {selectedPhoto.title}
                     </h3>
                     {selectedPhoto.price && (
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-heading font-black text-2xl text-amber-600">{selectedPhoto.price}</span>
-                        <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">стоимость работ</span>
+                      <div className="flex items-baseline gap-2 flex-wrap">
+                        <span className="font-heading font-black text-2xl text-amber-600 whitespace-nowrap">{selectedPhoto.price}</span>
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold whitespace-nowrap">стоимость работ</span>
                       </div>
                     )}
                     <div className="space-y-3 text-sm text-zinc-600 font-body leading-relaxed">
