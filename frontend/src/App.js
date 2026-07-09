@@ -512,15 +512,15 @@ export default function App() {
           <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-xl"></div>
           <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-md"></div>
 
-          <div className="w-full max-w-lg lg:max-w-xl flex flex-col items-center lg:-translate-x-10">
+          <div className="w-full max-w-md lg:max-w-lg flex flex-col items-center lg:-translate-x-10 lg:translate-y-10">
 
             {/* Framed photo — nudged above center, yellow frame */}
-            <div className="relative w-full lg:-mt-12 bg-amber-500 p-3 lg:p-4 shadow-2xl">
+            <div className="relative w-full lg:-mt-6 bg-amber-500 p-3 lg:p-4 shadow-2xl">
               <div className="relative overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85" 
                   alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
-                  className="w-full h-[340px] sm:h-[420px] lg:h-[520px] object-cover"
+                  className="w-full h-[300px] sm:h-[380px] lg:h-[450px] object-cover"
                   loading="eager"
                 />
                 {/* White filter — only over the photo */}
