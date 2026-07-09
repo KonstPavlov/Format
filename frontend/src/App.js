@@ -632,7 +632,7 @@ export default function App() {
             </h2>
             <div className="w-16 h-1 bg-amber-500 mx-auto mt-4"></div>
             <p className="text-zinc-600 text-sm sm:text-base font-medium">
-              Выберите подходящий формат ремонта. Оконная стоимость формируется индивидуально на основе точных замеров и фиксируется в смете.
+              Выберите подходящий формат ремонта. Окончательная стоимость формируется индивидуально на основе точных замеров и фиксируется в смете.
             </p>
           </div>
 
@@ -1285,7 +1285,7 @@ export default function App() {
           <div className="max-w-2xl text-left space-y-6">
             <span className="text-xs font-bold tracking-[0.25em] uppercase text-amber-500 block">Открытость и доверие</span>
             <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-white leading-none">
-              Приезжайте на наши<br /> действующие объекты
+              Приезжайте на наши<br /> текущие объекты
             </h2>
             <div className="w-16 h-1 bg-amber-500"></div>
             <p className="text-sm sm:text-base text-zinc-300 font-body leading-relaxed">
