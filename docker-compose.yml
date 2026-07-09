@@ -1,27 +1,10 @@
 services:
-  mongo:
-    image: mongo:7
-    container_name: format_mongo
-    restart: unless-stopped
-    # Limit WiredTiger cache to ~256MB to keep RAM usage low on small servers
-    command: ["mongod", "--wiredTigerCacheSizeGB", "0.25"]
-    volumes:
-      - mongo_data:/data/db
-    # Uncomment to expose Mongo on the host (usually not needed)
-    # ports:
-    #   - "27017:27017"
-
   backend:
     build: ./backend
     container_name: format_backend
     restart: unless-stopped
     env_file:
       - ./backend/.env
-    environment:
-      # Override MONGO_URL so it points to the mongo service inside the network
-      MONGO_URL: "mongodb://mongo:27017"
-    depends_on:
-      - mongo
     expose:
       - "8001"
 
@@ -40,6 +23,3 @@ services:
       - "80:80"
       # For HTTPS, terminate TLS here or put a reverse proxy / Caddy / Traefik in front
       # - "443:443"
-
-volumes:
-  mongo_data:
