@@ -3,16 +3,15 @@ services:
     build: ./backend
     container_name: format_backend
     restart: unless-stopped
-    # Runs out-of-the-box with zero config (no-email mode: leads are logged).
-    # To enable email delivery, set these variables in a root ".env" file or
-    # export them in the shell before running docker compose. See README.
+    # Работает сразу после `docker compose up --build` — почта уже настроена.
+    # Значения можно переопределить переменными окружения или корневым .env.
     environment:
       CORS_ORIGINS: "*"
       RECIPIENT_EMAIL: "${RECIPIENT_EMAIL:-lax-jakal@yandex.ru}"
-      SMTP_HOST: "${SMTP_HOST:-}"
+      SMTP_HOST: "${SMTP_HOST:-smtp.yandex.ru}"
       SMTP_PORT: "${SMTP_PORT:-465}"
-      SMTP_USER: "${SMTP_USER:-}"
-      SMTP_PASSWORD: "${SMTP_PASSWORD:-}"
+      SMTP_USER: "${SMTP_USER:-lax-jakal@yandex.ru}"
+      SMTP_PASSWORD: "${SMTP_PASSWORD:-itoizynivptmtmfl}"
     expose:
       - "8001"
 
