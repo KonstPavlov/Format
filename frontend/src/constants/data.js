@@ -130,7 +130,12 @@ export const PORTFOLIO_ITEMS = [
       "/images/portfolio/object-1/2.jpg",
       "/images/portfolio/object-1/3.jpg",
       "/images/portfolio/object-1/4.jpg",
-      "/images/portfolio/object-1/5.jpg"
+      "/images/portfolio/object-1/5.jpg",
+      "/images/portfolio/object-1/6.jpg",
+      "/images/portfolio/object-1/7.jpg",
+      "/images/portfolio/object-1/8.jpg",
+      "/images/portfolio/object-1/9.jpg",
+      "/images/portfolio/object-1/10.jpg"
     ],
     tags: ["Капитальный", "Под ключ", "ЖК Авиатор"]
   },
