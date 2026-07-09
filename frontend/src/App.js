@@ -246,6 +246,15 @@ export default function App() {
     scrollToSection("contact-form-section");
   };
 
+  // Prefill form for "visit our active site" CTA
+  const handleVisitCTA = () => {
+    setFormData((prev) => ({
+      ...prev,
+      comment: "Хочу приехать на действующий объект и посмотреть, как вы работаете."
+    }));
+    scrollToSection("contact-form-section");
+  };
+
   // Submit form handler
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -1257,6 +1266,68 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* 8.6 Visit Active Objects Section */}
+      <section id="visit-section" className="relative py-24 sm:py-32 overflow-hidden bg-zinc-900">
+        {/* Background image + overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?crop=entropy&cs=srgb&fm=jpg&w=1920&q=80"
+            alt="Действующий объект компании ФОРМАТ в работе"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-zinc-950/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/70 to-transparent"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-left space-y-6">
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-amber-500 block">Открытость и доверие</span>
+            <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-white leading-none">
+              Приезжайте на наши<br /> действующие объекты
+            </h2>
+            <div className="w-16 h-1 bg-amber-500"></div>
+            <p className="text-sm sm:text-base text-zinc-300 font-body leading-relaxed">
+              Нам нечего скрывать. Вы можете лично приехать на текущий объект в Иркутске и своими глазами увидеть, как работает наша команда: качество черновых работ, порядок на площадке, аккуратность мастеров и используемые материалы.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-4 py-4">
+              {[
+                { t: "Реальные объекты", d: "Покажем ремонт на разных стадиях" },
+                { t: "Живое общение", d: "Ответим на все вопросы на месте" },
+                { t: "Без обязательств", d: "Просмотр ни к чему вас не обязывает" }
+              ].map((item, i) => (
+                <div key={i} className="border-l-2 border-amber-500 pl-4 text-left" data-testid={`visit-benefit-${i}`}>
+                  <h3 className="font-heading font-bold text-sm text-white uppercase tracking-tight mb-1">{item.t}</h3>
+                  <p className="text-xs text-zinc-400 font-body leading-relaxed">{item.d}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <button
+                onClick={handleVisitCTA}
+                className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center inline-flex items-center justify-center gap-2"
+                data-testid="visit-cta-button"
+              >
+                <MapPin className="w-4 h-4" />
+                Записаться на просмотр объекта
+              </button>
+              <a
+                href={CONTACTS.phoneRaw}
+                className="w-full sm:w-auto bg-transparent border border-zinc-600 hover:border-amber-500 text-white hover:text-amber-500 font-bold uppercase text-xs tracking-wider px-8 py-4.5 transition-all duration-300 font-heading text-center inline-flex items-center justify-center gap-2"
+                data-testid="visit-call-button"
+              >
+                <Phone className="w-4 h-4" />
+                Позвонить
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
 
 
