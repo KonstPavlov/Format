@@ -318,7 +318,7 @@ export default function App() {
       {/* 1. Header (Sticky - Light Glassmorphism) */}
       <header 
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white border-b border-zinc-200 py-4 shadow-md" : "bg-white py-6 border-b border-zinc-100"
+          scrolled ? "bg-white border-b border-zinc-200 py-2.5 shadow-md" : "bg-white py-3.5 border-b border-zinc-100"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -397,7 +397,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[73px] left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-zinc-200 z-45 py-8 px-6 lg:hidden shadow-lg"
+            className="fixed top-[64px] left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-zinc-200 z-45 py-8 px-6 lg:hidden shadow-lg"
           >
             <div className="flex flex-col gap-6 text-center text-base uppercase tracking-widest font-bold text-zinc-800">
               <button onClick={() => scrollToSection("about-section")} className="hover:text-amber-500 py-2">Преимущества</button>
