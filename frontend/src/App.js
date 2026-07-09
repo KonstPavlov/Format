@@ -512,7 +512,7 @@ export default function App() {
           <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-xl"></div>
           <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-md"></div>
 
-          <div className="w-full max-w-lg lg:max-w-xl flex flex-col items-center lg:-translate-x-24">
+          <div className="w-full max-w-lg lg:max-w-xl flex flex-col items-center lg:-translate-x-16">
 
             {/* Framed photo — nudged above center, yellow frame */}
             <div className="relative w-full lg:-mt-12 bg-amber-500 p-3 lg:p-4 shadow-2xl">
