@@ -436,7 +436,7 @@ export default function App() {
       <section className="relative min-h-screen grid lg:grid-cols-2 bg-white overflow-hidden">
 
         {/* LEFT — Text on white background */}
-        <div className="relative z-20 bg-white flex items-center pt-28 pb-16 lg:pt-24 lg:pb-24 px-5 sm:px-8 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-16">
+        <div className="relative z-20 bg-white flex items-center [@media(max-height:800px)]:items-start pt-28 pb-16 lg:py-28 px-5 sm:px-8 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-16">
           <div className="w-full max-w-xl space-y-8 text-left">
 
             <div className="inline-flex items-center gap-2 text-amber-600 font-heading text-xs font-bold tracking-[0.25em] uppercase border border-amber-500/30 bg-amber-500/5 px-3 py-1.5">
@@ -505,17 +505,17 @@ export default function App() {
           </div>
         </div>
 
-        {/* RIGHT — Framed Scandinavian interior above center, discount plaque below */}
-        <div className="relative flex flex-col items-center justify-center bg-white px-6 sm:px-10 lg:px-14 py-16 lg:py-24">
+        {/* RIGHT — Framed Scandinavian interior, discount plaque below */}
+        <div className="relative flex flex-col items-center justify-center [@media(max-height:800px)]:justify-start bg-white px-6 sm:px-10 lg:px-14 pt-28 pb-16 lg:py-28">
 
           {/* Transition line — vertical & narrow on desktop, horizontal on mobile */}
           <div className="hidden lg:block absolute top-0 left-0 h-full w-1.5 bg-amber-500 -translate-x-1/2 z-30 shadow-xl"></div>
           <div className="lg:hidden absolute top-0 left-0 w-full h-1.5 bg-amber-500 z-30 shadow-md"></div>
 
-          <div className="w-full max-w-md lg:max-w-lg flex flex-col items-center lg:-translate-x-10 lg:translate-y-10">
+          <div className="w-full max-w-md lg:max-w-lg flex flex-col items-center lg:-translate-x-10">
 
-            {/* Framed photo — nudged above center, yellow frame */}
-            <div className="relative w-full lg:-mt-6 bg-amber-500 p-3 lg:p-4 shadow-2xl">
+            {/* Framed photo — yellow frame */}
+            <div className="relative w-full bg-amber-500 p-3 lg:p-4 shadow-2xl">
               <div className="relative overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85" 
