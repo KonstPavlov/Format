@@ -903,7 +903,7 @@ export default function App() {
                     </>
                   )}
                 </div>
-                <div className="md:col-span-4 p-8 space-y-6 flex flex-col justify-between">
+                <div className="md:col-span-4 p-8 space-y-6 flex flex-col justify-between max-h-[75vh] overflow-y-auto">
                   <div className="space-y-4">
                     <div className="flex flex-wrap gap-2">
                       {selectedPhoto.tags.map((tag, i) => (
@@ -915,9 +915,21 @@ export default function App() {
                     <h3 className="font-heading font-black text-xl text-zinc-900 uppercase leading-tight">
                       {selectedPhoto.title}
                     </h3>
-                    <p className="text-sm text-zinc-600 font-body">
-                      Объект выполнен под ключ в соответствии с высокими стандартами качества строительной группы ФОРМАТ. Выполнена полная проверка качества материалов.
-                    </p>
+                    {selectedPhoto.price && (
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-heading font-black text-2xl text-amber-600">{selectedPhoto.price}</span>
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">стоимость работ</span>
+                      </div>
+                    )}
+                    <div className="space-y-3 text-sm text-zinc-600 font-body leading-relaxed">
+                      {selectedPhoto.description
+                        ? selectedPhoto.description.split("\n\n").map((para, i) => (
+                            <p key={i}>{para}</p>
+                          ))
+                        : (
+                          <p>Объект выполнен под ключ в соответствии с высокими стандартами качества строительной группы ФОРМАТ. Выполнена полная проверка качества материалов.</p>
+                        )}
+                    </div>
                     <p className="text-xs text-zinc-400 font-bold">
                       Локация: {selectedPhoto.desc}
                     </p>
