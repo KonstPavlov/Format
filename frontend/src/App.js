@@ -40,9 +40,18 @@ import {
   ADVANTAGES, 
   STAGES, 
   PORTFOLIO_ITEMS, 
+  PORTFOLIO_PLACEHOLDER,
   TESTIMONIALS, 
   FAQ_ITEMS 
 } from "@/constants/data";
+
+// Graceful fallback: if a local portfolio image is missing, show the placeholder.
+// Used on every portfolio <img> via onError.
+const handleImgError = (e) => {
+  if (e.target.src.indexOf(PORTFOLIO_PLACEHOLDER) === -1) {
+    e.target.src = PORTFOLIO_PLACEHOLDER;
+  }
+};
 
 // Brand logo mark — three stylized skyscrapers with illuminated amber windows
 const FormatLogoMark = ({ className = "w-9 h-9" }) => (
@@ -786,6 +795,7 @@ export default function App() {
                     alt={item.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                     loading="lazy"
+                    onError={handleImgError}
                   />
                   {/* Photo count badge */}
                   <div className="absolute top-3 right-3 bg-black/70 text-white text-[10px] font-bold px-2 py-1 flex items-center gap-1 tracking-wider">
@@ -862,6 +872,7 @@ export default function App() {
                       alt={`${selectedPhoto.title} — фото ${photoIndex + 1}`} 
                       className="max-h-[70vh] w-full object-contain"
                       data-testid="portfolio-modal-image"
+                      onError={handleImgError}
                     />
                   </AnimatePresence>
 
@@ -923,7 +934,7 @@ export default function App() {
                             }`}
                             data-testid={`portfolio-modal-thumb-${i}`}
                           >
-                            <img src={img} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" />
+                            <img src={img} alt={`Миниатюра ${i + 1}`} className="w-full h-full object-cover" onError={handleImgError} />
                           </button>
                         ))}
                       </div>

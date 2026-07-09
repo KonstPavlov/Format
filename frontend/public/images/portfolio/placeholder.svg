@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#f4f4f5"/>
+  <rect x="0" y="0" width="800" height="6" fill="#F59E0B"/>
+  <g fill="#a1a1aa" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="400" y="300" font-size="34" font-weight="bold" letter-spacing="2">ФОРМАТ</text>
+    <text x="400" y="345" font-size="18">Фото объекта скоро появится</text>
+  </g>
+</svg>

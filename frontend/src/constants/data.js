@@ -90,15 +90,43 @@ export const STAGES = [
   { step: "06", title: "Сдача объекта", desc: "Принимаете идеальный готовый ремонт. Подписываем акт, убираем мусор." }
 ];
 
+// ============================================================================
+// ПОРТФОЛИО ОБЪЕКТОВ
+// ----------------------------------------------------------------------------
+// Все фотографии хранятся ЛОКАЛЬНО в папке проекта:
+//     frontend/public/images/portfolio/
+// У каждого объекта — своя подпапка (object-1, object-2, ...), а внутри
+// изображения пронумерованы: 1.jpg, 2.jpg, 3.jpg ...
+//
+// КАК ДОБАВИТЬ НОВЫЙ ОБЪЕКТ В ПОРТФОЛИО:
+//   1. Создайте новую папку: frontend/public/images/portfolio/object-7/
+//   2. Скопируйте туда фотографии и назовите их: 1.jpg, 2.jpg, 3.jpg ...
+//   3. Добавьте новый объект в массив PORTFOLIO_ITEMS ниже (можно скопировать
+//      любой существующий блок) и укажите пути к своим фото в поле "images".
+//   4. Уникальный "id", заголовок "title", описание "desc" и теги "tags".
+//
+// КАК ЗАМЕНИТЬ ФОТО существующего объекта:
+//   Просто положите новый файл с тем же именем (например, 1.jpg) в нужную
+//   папку object-N — путь в данных менять не нужно.
+//
+// ВАЖНО: используются ТОЛЬКО локальные пути вида "/images/portfolio/...".
+// Внешние (Unsplash/Pexels) ссылки больше не применяются.
+// Если какого-то файла не окажется на месте — вместо него автоматически
+// покажется заглушка PORTFOLIO_PLACEHOLDER (см. обработку onError в App.js).
+// ============================================================================
+
+// Заглушка, которая показывается, если файл изображения отсутствует
+export const PORTFOLIO_PLACEHOLDER = "/images/portfolio/placeholder.svg";
+
 export const PORTFOLIO_ITEMS = [
   {
     id: 1,
     title: "Минималистичная спальня в темных тонах",
     desc: "ЖК Авиатор — Площадь: 64 м²",
     images: [
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1738168246881-40f35f8aba0a?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=compress&cs=tinysrgb&w=1200"
+      "/images/portfolio/object-1/1.jpg",
+      "/images/portfolio/object-1/2.jpg",
+      "/images/portfolio/object-1/3.jpg"
     ],
     tags: ["Капитальный", "Спальня", "ЖК Авиатор"]
   },
@@ -107,9 +135,9 @@ export const PORTFOLIO_ITEMS = [
     title: "Современная гостиная с медиа-зоной",
     desc: "Улица Лермонтова — Площадь: 78 м²",
     images: [
-      "https://images.pexels.com/photos/13722888/pexels-photo-13722888.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1738168279272-c08d6dd22002?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=compress&cs=tinysrgb&w=1200"
+      "/images/portfolio/object-2/1.jpg",
+      "/images/portfolio/object-2/2.jpg",
+      "/images/portfolio/object-2/3.jpg"
     ],
     tags: ["Дизайнерский", "Гостиная"]
   },
@@ -118,9 +146,9 @@ export const PORTFOLIO_ITEMS = [
     title: "Кухня-гостиная с барной стойкой",
     desc: "ЖК Новый — Площадь: 52 м²",
     images: [
-      "https://images.pexels.com/photos/13722886/pexels-photo-13722886.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1689043528099-2ba014dd7c64?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1680416124510-5eae1beca412?auto=compress&cs=tinysrgb&w=1200"
+      "/images/portfolio/object-3/1.jpg",
+      "/images/portfolio/object-3/2.jpg",
+      "/images/portfolio/object-3/3.jpg"
     ],
     tags: ["Дизайнерский", "Кухня", "ЖК Новый"]
   },
@@ -129,9 +157,9 @@ export const PORTFOLIO_ITEMS = [
     title: "Санузел в стиле лофт под ключ",
     desc: "ЖК Квартал — Площадь: 8 м²",
     images: [
-      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=compress&cs=tinysrgb&w=1200"
+      "/images/portfolio/object-4/1.jpg",
+      "/images/portfolio/object-4/2.jpg",
+      "/images/portfolio/object-4/3.jpg"
     ],
     tags: ["Санузел", "Керамогранит"]
   },
@@ -140,9 +168,9 @@ export const PORTFOLIO_ITEMS = [
     title: "Светлая детская комната",
     desc: "ЖК Символ — Площадь: 45 м²",
     images: [
-      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=compress&cs=tinysrgb&w=1200"
+      "/images/portfolio/object-5/1.jpg",
+      "/images/portfolio/object-5/2.jpg",
+      "/images/portfolio/object-5/3.jpg"
     ],
     tags: ["Косметический", "Детская"]
   },
@@ -151,9 +179,9 @@ export const PORTFOLIO_ITEMS = [
     title: "Премиальная прихожая с подсветкой",
     desc: "Улица Декабрьских Событий — Площадь: 12 м²",
     images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=compress&cs=tinysrgb&w=1200"
+      "/images/portfolio/object-6/1.jpg",
+      "/images/portfolio/object-6/2.jpg",
+      "/images/portfolio/object-6/3.jpg"
     ],
     tags: ["Дизайнерский", "Прихожая"]
   }
