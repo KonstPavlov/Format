@@ -3,7 +3,7 @@ services:
     build: ./backend
     container_name: format_backend
     restart: unless-stopped
-    # Работает сразу после `docker compose up --build` — почта уже настроена.
+    # Работает сразу после `docker compose up -d --build` — почта уже настроена.
     # Значения можно переопределить переменными окружения или корневым .env.
     environment:
       CORS_ORIGINS: "*"
@@ -19,15 +19,30 @@ services:
     build:
       context: ./frontend
       args:
-        # Public URL for API calls. Leave empty to use same-origin "/api"
-        # (works on any domain/IP because nginx proxies /api to the backend).
-        # Optionally set PUBLIC_URL=https://your-domain.com if fronting elsewhere.
+        # Пусто → фронтенд использует относительный "/api" (nginx проксирует на backend).
         REACT_APP_BACKEND_URL: "${PUBLIC_URL:-}"
     container_name: format_frontend
     restart: unless-stopped
     depends_on:
       - backend
+    # Доступен только внутри Docker-сети. Наружу его публикует Caddy.
+    expose:
+      - "80"
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: format_caddy
+    restart: unless-stopped
+    depends_on:
+      - frontend
     ports:
       - "80:80"
-      # For HTTPS, terminate TLS here or put a reverse proxy / Caddy / Traefik in front
-      # - "443:443"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,4 @@
+format-remont.ru, www.format-remont.ru {
+	encode gzip
+	reverse_proxy frontend:80
+}
