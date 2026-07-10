@@ -242,7 +242,6 @@ export const PORTFOLIO_ITEMS = [
     title: "Премиальная прихожая с подсветкой",
     desc: "Улица Декабрьских Событий — Площадь: 12 м²",
     images: [
-      "/images/portfolio/object-6/1.jpg",
       "/images/portfolio/object-6/2.jpg",
       "/images/portfolio/object-6/3.jpg"
     ],
