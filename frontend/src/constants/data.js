@@ -165,7 +165,12 @@ export const PORTFOLIO_ITEMS = [
       "/images/portfolio/object-2/12.jpg",
       "/images/portfolio/object-2/13.jpg",
       "/images/portfolio/object-2/14.jpg",
-      "/images/portfolio/object-2/15.jpg"
+      "/images/portfolio/object-2/15.jpg",
+      "/images/portfolio/object-2/16.jpg",
+      "/images/portfolio/object-2/17.jpg",
+      "/images/portfolio/object-2/18.jpg",
+      "/images/portfolio/object-2/19.jpg",
+      "/images/portfolio/object-2/20.jpg"
     ],
     tags: ["Капитальный", "Под ключ", "6-я Советская"]
   },
