@@ -821,6 +821,11 @@ export default function App() {
                     {item.title}
                   </h3>
                   <p className="text-xs text-zinc-500">{item.desc}</p>
+                  {item.price && (
+                    <p className="pt-1 font-heading font-extrabold text-lg text-amber-600" data-testid={`portfolio-card-price-${index}`}>
+                      {item.price}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
