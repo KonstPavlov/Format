@@ -209,7 +209,9 @@ export const PORTFOLIO_ITEMS = [
       "/images/portfolio/object-3/s7.jpg",
       "/images/portfolio/object-3/s8.jpg",
       "/images/portfolio/object-3/s9.jpg",
-      "/images/portfolio/object-3/s10.jpg"
+      "/images/portfolio/object-3/s10.jpg",
+      "/images/portfolio/object-3/s11.jpg",
+      "/images/portfolio/object-3/s12.jpg"
     ],
     tags: ["Под ключ", "Студия", "ЖК 4 Солнца"]
   },
