@@ -518,7 +518,7 @@ export default function App() {
             <div className="relative w-full bg-amber-500 p-3 lg:p-4 shadow-2xl">
               <div className="relative overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?crop=entropy&cs=srgb&fm=jpg&w=1200&q=85" 
+                  src="/images/hero.jpg" 
                   alt="Ремонт квартиры в скандинавском стиле от ФОРМАТ" 
                   className="w-full h-[300px] sm:h-[380px] lg:h-[450px] object-cover"
                   loading="eager"
