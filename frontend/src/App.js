@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "@/App.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Phone, 
@@ -109,6 +110,7 @@ export default function App() {
 
   // Lead Form states
   const [formData, setFormData] = useState({ name: "", phone: "", comment: "" });
+  const [formConsent, setFormConsent] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState(null);
@@ -271,6 +273,10 @@ export default function App() {
       setFormError("Пожалуйста, заполните обязательные поля (Имя и Телефон)");
       return;
     }
+    if (!formConsent) {
+      setFormError("Необходимо дать согласие на обработку персональных данных");
+      return;
+    }
 
     setFormLoading(true);
     setFormError(null);
@@ -294,6 +300,7 @@ export default function App() {
       if (response.status === 200 || response.status === 201) {
         setFormSubmitted(true);
         setFormData({ name: "", phone: "", comment: "" });
+        setFormConsent(false);
       } else {
         throw new Error("Неверный ответ от сервера");
       }
@@ -1567,16 +1574,36 @@ export default function App() {
                   />
                 </div>
 
-                <div className="text-[11px] text-zinc-500 leading-relaxed font-body">
-                  Нажимая кнопку, вы соглашаетесь с{" "}
-                  <a href="/privacy" className="underline text-zinc-400 hover:text-amber-500">Политикой конфиденциальности</a>{" "}
-                  и даете согласие на обработку персональных данных.
+                <div className="pt-1">
+                  <label className="flex items-start gap-3 cursor-pointer select-none group" data-testid="lead-form-consent-label">
+                    <input
+                      type="checkbox"
+                      required
+                      checked={formConsent}
+                      onChange={(e) => setFormConsent(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 shrink-0 accent-amber-500 cursor-pointer"
+                      data-testid="lead-form-consent-checkbox"
+                    />
+                    <span className="text-[11px] text-zinc-500 leading-relaxed font-body">
+                      Я даю согласие на обработку моих персональных данных в соответствии с{" "}
+                      <Link
+                        to="/privacy"
+                        target="_blank"
+                        className="underline text-zinc-600 hover:text-amber-500 font-semibold"
+                        onClick={(e) => e.stopPropagation()}
+                        data-testid="lead-form-consent-link"
+                      >
+                        Политикой обработки персональных данных
+                      </Link>
+                      .
+                    </span>
+                  </label>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={formLoading}
-                  className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-zinc-100 disabled:text-zinc-400 text-black font-black uppercase text-xs tracking-widest py-4 transition-all duration-300 font-heading"
+                  disabled={formLoading || !formConsent}
+                  className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-zinc-100 disabled:text-zinc-400 disabled:cursor-not-allowed text-black font-black uppercase text-xs tracking-widest py-4 transition-all duration-300 font-heading"
                   data-testid="lead-form-submit-button"
                 >
                   {formLoading ? "Отправка..." : "Заказать бесплатный замер"}
@@ -1683,8 +1710,7 @@ export default function App() {
               &copy; {new_year()} СК ФОРМАТ. Все права защищены. Ремонт квартир под ключ в Иркутске.
             </div>
             <div className="flex gap-6">
-              <a href="/privacy" className="hover:underline hover:text-zinc-300 font-semibold">Политикой конфиденциальности</a>
-              <a href="/consent" className="hover:underline hover:text-zinc-300 font-semibold">Согласие на обработку персональных данных</a>
+              <Link to="/privacy" className="hover:underline hover:text-zinc-300 font-semibold" data-testid="footer-privacy-link">Политика обработки персональных данных</Link>
             </div>
           </div>
 
