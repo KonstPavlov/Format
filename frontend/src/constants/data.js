@@ -144,8 +144,7 @@ export const PORTFOLIO_ITEMS = [
       "/images/portfolio/object-strizhi/14.webp",
       "/images/portfolio/object-strizhi/15.webp",
       "/images/portfolio/object-strizhi/16.webp",
-      "/images/portfolio/object-strizhi/17.webp",
-      "/images/portfolio/object-strizhi/18.webp"
+      "/images/portfolio/object-strizhi/17.webp"
       
     ],
     tags: ["Дизайнерский", "Под ключ", "ЖК Стрижи Сити"]
