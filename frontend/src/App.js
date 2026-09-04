@@ -160,6 +160,18 @@ export default function App() {
     return () => window.removeEventListener("keydown", onKey);
   }, [selectedPhoto]);
 
+  // Lock body scroll while the mobile menu is open (prevents content scrolling behind the menu)
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   // Calculator states
   const [calcRoomType, setCalcRoomType] = useState("apartment"); // studio, apartment, house, commercial
   const [calcArea, setCalcArea] = useState(50);
@@ -387,11 +399,14 @@ export default function App() {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden p-2 text-zinc-600 hover:text-zinc-900"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            type="button"
+            className="lg:hidden p-2 -mr-2 text-zinc-700 hover:text-zinc-900 relative z-[60]"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-expanded={mobileMenuOpen}
             data-testid="header-mobile-menu-toggle"
           >
-            <Menu className="w-6 h-6" />
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
         </div>
@@ -400,41 +415,52 @@ export default function App() {
       {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[64px] left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-zinc-200 z-45 py-8 px-6 lg:hidden shadow-lg"
-          >
-            <div className="flex flex-col gap-6 text-center text-base uppercase tracking-widest font-bold text-zinc-800">
-              <button onClick={() => scrollToSection("about-section")} className="hover:text-amber-500 py-2">Преимущества</button>
-              <button onClick={() => scrollToSection("pricing-section")} className="hover:text-amber-500 py-2">Цены</button>
-              <button onClick={() => scrollToSection("services-section")} className="hover:text-amber-500 py-2">Услуги</button>
-              <button onClick={() => scrollToSection("portfolio-section")} className="hover:text-amber-500 py-2">Портфолио</button>
-              <button onClick={() => scrollToSection("founder-section")} className="hover:text-amber-500 py-2">Руководитель</button>
-              <button onClick={() => scrollToSection("calculator-section")} className="hover:text-amber-500 py-2">Калькулятор</button>
-              <button onClick={() => scrollToSection("faq-section")} className="hover:text-amber-500 py-2">FAQ</button>
-              
-              <div className="h-px bg-zinc-200 my-4"></div>
-              
-              <a 
-                href={CONTACTS.phoneRaw} 
-                className="font-heading font-bold text-lg text-zinc-900 hover:text-amber-500 transition-colors flex items-center justify-center gap-2"
-                data-testid="mobile-menu-phone-link"
-              >
-                <Phone className="w-5 h-5 text-amber-500" />
-                <span>{CONTACTS.phone}</span>
-              </a>
+          <>
+            {/* Backdrop — closes menu on tap, sits above page content */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+              data-testid="mobile-menu-backdrop"
+            />
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="fixed top-[56px] sm:top-[64px] left-0 w-full max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto bg-white/95 backdrop-blur-2xl border-b border-zinc-200 z-[45] py-8 px-6 lg:hidden shadow-lg"
+            >
+              <div className="flex flex-col gap-6 text-center text-base uppercase tracking-widest font-bold text-zinc-800">
+                <button onClick={() => scrollToSection("about-section")} className="hover:text-amber-500 py-2">Преимущества</button>
+                <button onClick={() => scrollToSection("pricing-section")} className="hover:text-amber-500 py-2">Цены</button>
+                <button onClick={() => scrollToSection("services-section")} className="hover:text-amber-500 py-2">Услуги</button>
+                <button onClick={() => scrollToSection("portfolio-section")} className="hover:text-amber-500 py-2">Портфолио</button>
+                <button onClick={() => scrollToSection("founder-section")} className="hover:text-amber-500 py-2">Руководитель</button>
+                <button onClick={() => scrollToSection("calculator-section")} className="hover:text-amber-500 py-2">Калькулятор</button>
+                <button onClick={() => scrollToSection("faq-section")} className="hover:text-amber-500 py-2">FAQ</button>
+                
+                <div className="h-px bg-zinc-200 my-4"></div>
+                
+                <a 
+                  href={CONTACTS.phoneRaw} 
+                  className="font-heading font-bold text-lg text-zinc-900 hover:text-amber-500 transition-colors flex items-center justify-center gap-2"
+                  data-testid="mobile-menu-phone-link"
+                >
+                  <Phone className="w-5 h-5 text-amber-500" />
+                  <span>{CONTACTS.phone}</span>
+                </a>
 
-              <button 
-                onClick={() => scrollToSection("contact-form-section")}
-                className="bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-sm tracking-widest py-4 mt-2"
-                data-testid="mobile-menu-cta-button"
-              >
-                Бесплатный замер
-              </button>
-            </div>
-          </motion.div>
+                <button 
+                  onClick={() => scrollToSection("contact-form-section")}
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-bold uppercase text-sm tracking-widest py-4 mt-2"
+                  data-testid="mobile-menu-cta-button"
+                >
+                  Бесплатный замер
+                </button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
