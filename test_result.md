@@ -101,3 +101,58 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Landing page ФОРМАТ. Mobile bugs: (1) burger menu opens inconsistently and appears behind gallery; (2) in Google Chrome mobile some menu item text renders strangely and gallery photo counter stays at 1/17 when swiping; (3) gallery image size should stay fixed and text should not jump when navigating photos."
+
+frontend:
+  - task: "Mobile burger menu z-index / open-close reliability"
+    implemented: true
+    working: false
+    file: "frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Fixed invalid z-45 class -> z-[45]; burger toggles Menu/X icon; added backdrop overlay to close on tap; body scroll lock when open; removed backdrop-blur from menu (bg-white solid) to fix strange text in mobile Chrome."
+        -working: false
+        -agent: "testing"
+        -comment: "CRITICAL BUG FOUND: Backdrop click is BLOCKED. Menu panel has z-index 45 while backdrop has z-index 40, causing the menu to render ABOVE the backdrop. When user taps the backdrop area, the menu panel intercepts the click and backdrop onClick never fires. Toggle button works perfectly (opens/closes reliably, icon toggles Menu↔X, all menu items visible, body scroll locks). FIX NEEDED: Either swap z-indexes (backdrop z-50, menu z-45) OR add pointer-events:none to menu panel with pointer-events:auto on children."
+
+  - task: "Gallery lightbox counter update + fixed image size in mobile Chrome"
+    implemented: true
+    working: true
+    file: "frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        -working: "NA"
+        -agent: "main"
+        -comment: "Removed backdrop-blur from modal overlay (caused stale composited layer so counter did not repaint in mobile Chrome); added key={photoIndex} to counter to force repaint; fixed carousel container height (h-[42vh] sm:h-[52vh]) with absolute object-contain image so size no longer changes and text below does not shift when navigating."
+        -working: true
+        -agent: "testing"
+        -comment: "VERIFIED WORKING: Counter increments correctly (1/17 → 2/17 → 3/17... → 7/17), prev button works (7/17 → 6/17), carousel height stays constant at 354px (no jumping), images change correctly. Tested on mobile viewport 390x844. All gallery functionality working perfectly."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Mobile burger menu z-index / open-close reliability"
+    - "Gallery lightbox counter update + fixed image size in mobile Chrome"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    -agent: "testing"
+    -message: "Verified on 390x844 mobile viewport: gallery counter increments correctly (1/17->7/17 and back), carousel height constant (no jump), images change. Burger toggles reliably with Menu<->X icon, menu renders above content, body scroll locks. Note: tapping the small exposed backdrop area to close works; the X button and nav-item taps close reliably."
+    -agent: "main"
+    -message: "Please test on a MOBILE viewport (e.g. 390x844) emulating Chrome. Verify: (1) burger opens/closes reliably, icon toggles Menu<->X, menu appears ABOVE gallery/hero content (not behind), tapping backdrop closes it, page scroll is locked while open. (2) Open a portfolio project with multiple photos, click next/prev and swipe; the counter (data-testid=portfolio-modal-counter) MUST increment (1/17 -> 2/17 ...). (3) While navigating photos the carousel image container height stays constant and the text block below does not jump. Landing page only, no auth."
+    -agent: "testing"
+    -message: "TESTING COMPLETE on mobile viewport 390x844. GALLERY LIGHTBOX: ✓ Working perfectly - counter increments correctly, carousel height constant, images change. BURGER MENU: ✗ CRITICAL BUG - backdrop click blocked by z-index issue. Menu panel (z-45) renders ABOVE backdrop (z-40), intercepting all clicks. Toggle button works perfectly. FIX: Swap z-indexes OR use pointer-events. See detailed findings in status_history."

@@ -429,7 +429,7 @@ export default function App() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="fixed top-[56px] sm:top-[64px] left-0 w-full max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto bg-white/95 backdrop-blur-2xl border-b border-zinc-200 z-[45] py-8 px-6 lg:hidden shadow-lg"
+              className="fixed top-[56px] sm:top-[64px] left-0 w-full max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto bg-white border-b border-zinc-200 z-[45] py-8 px-6 lg:hidden shadow-lg"
             >
               <div className="flex flex-col gap-6 text-center text-base uppercase tracking-widest font-bold text-zinc-800">
                 <button onClick={() => scrollToSection("about-section")} className="hover:text-amber-500 py-2">Преимущества</button>
@@ -874,7 +874,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 sm:p-6"
             onClick={() => setSelectedPhoto(null)}
           >
             <motion.div 
@@ -894,12 +894,12 @@ export default function App() {
 
               <div className="flex flex-col">
                 <div 
-                  className="w-full bg-zinc-950 flex flex-col items-center justify-center relative select-none"
+                  className="w-full bg-zinc-950 relative select-none overflow-hidden h-[42vh] sm:h-[52vh]"
                   onTouchStart={handleTouchStart}
                   onTouchEnd={handleTouchEnd}
                   data-testid="portfolio-modal-carousel"
                 >
-                  <AnimatePresence mode="wait">
+                  <AnimatePresence initial={false}>
                     <motion.img 
                       key={photoIndex}
                       initial={{ opacity: 0 }}
@@ -908,7 +908,7 @@ export default function App() {
                       transition={{ duration: 0.2 }}
                       src={selectedPhoto.images[photoIndex]} 
                       alt={`${selectedPhoto.title} — фото ${photoIndex + 1}`} 
-                      className="max-h-[55vh] w-full object-contain"
+                      className="absolute inset-0 w-full h-full object-contain"
                       data-testid="portfolio-modal-image"
                       onError={handleImgError}
                     />
@@ -935,7 +935,7 @@ export default function App() {
                         <ChevronDown className="w-5 h-5 -rotate-90" />
                       </button>
                       {/* Counter */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs font-bold px-3 py-1.5 tracking-wider z-10" data-testid="portfolio-modal-counter">
+                      <div key={photoIndex} className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs font-bold px-3 py-1.5 tracking-wider z-10" data-testid="portfolio-modal-counter">
                         {photoIndex + 1} / {selectedPhoto.images.length}
                       </div>
                     </>
